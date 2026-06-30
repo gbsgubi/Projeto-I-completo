@@ -1,0 +1,565 @@
+% =====================================================================
+%  Relatório de execução — Verificador de Contestação (Fase 1)
+%
+%  Compilar com pdfLaTeX (recomendado). Em Overleaf, basta selecionar
+%  pdfLaTeX (padrão). Os blocos de código usam o pacote listings com um
+%  mapeamento de acentos (literate) para renderizar corretamente sob
+%  pdfLaTeX + inputenc utf8.
+% =====================================================================
+\documentclass[11pt,a4paper]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[brazil]{babel}
+\usepackage{lmodern}
+\usepackage{textcomp}   % \textdegree, \textordmasculine, etc.
+\usepackage{upquote}    % aspas retas em verbatim/listings (upquote=true)
+\usepackage[a4paper,margin=2.3cm]{geometry}
+\usepackage{xcolor}
+\usepackage{listings}
+\usepackage{booktabs}
+\usepackage{longtable}
+\usepackage{array}
+\usepackage{enumitem}
+\usepackage{parskip}
+\usepackage[hidelinks]{hyperref}
+
+% ---------- cores ----------
+\definecolor{corFundo}{RGB}{248,248,248}
+\definecolor{corMoldura}{RGB}{220,220,220}
+\definecolor{corComent}{RGB}{0,128,0}
+\definecolor{corChave}{RGB}{0,0,180}
+\definecolor{corString}{RGB}{163,21,21}
+\definecolor{corErro}{RGB}{180,0,0}
+\definecolor{corOK}{RGB}{0,120,0}
+
+% ---------- listings: mapeamento de acentos/símbolos (literate) ----------
+\lstset{
+  basicstyle=\ttfamily\footnotesize,
+  backgroundcolor=\color{corFundo},
+  frame=single,
+  rulecolor=\color{corMoldura},
+  breaklines=true,
+  breakatwhitespace=false,
+  columns=fullflexible,
+  keepspaces=true,
+  showstringspaces=false,
+  upquote=true,
+  extendedchars=true,
+  literate=%
+    {á}{{\'a}}1 {à}{{\`a}}1 {â}{{\^a}}1 {ã}{{\~a}}1 {ä}{{\"a}}1
+    {é}{{\'e}}1 {ê}{{\^e}}1 {è}{{\`e}}1 {ë}{{\"e}}1
+    {í}{{\'i}}1 {î}{{\^i}}1 {ï}{{\"i}}1
+    {ó}{{\'o}}1 {ô}{{\^o}}1 {õ}{{\~o}}1 {ö}{{\"o}}1
+    {ú}{{\'u}}1 {û}{{\^u}}1 {ü}{{\"u}}1
+    {ç}{{\c c}}1 {ñ}{{\~n}}1
+    {Á}{{\'A}}1 {À}{{\`A}}1 {Â}{{\^A}}1 {Ã}{{\~A}}1
+    {É}{{\'E}}1 {Ê}{{\^E}}1 {È}{{\`E}}1
+    {Í}{{\'I}}1 {Ó}{{\'O}}1 {Ô}{{\^O}}1 {Õ}{{\~O}}1
+    {Ú}{{\'U}}1 {Ç}{{\c C}}1 {Ñ}{{\~N}}1
+    {º}{{\textordmasculine}}1 {ª}{{\textordfeminine}}1 {°}{{\textdegree}}1
+    {§}{{\S}}1
+    {–}{{--}}1 {—}{{---}}2
+    {“}{{``}}1 {”}{{''}}1 {‘}{{`}}1 {’}{{'}}1
+    {…}{{\ldots}}1 {×}{{$\times$}}1
+}
+
+\lstdefinestyle{terminal}{}
+\lstdefinestyle{json}{}
+\lstdefinestyle{py}{
+  language=Python,
+  keywordstyle=\color{corChave}\bfseries,
+  commentstyle=\color{corComent}\itshape,
+  stringstyle=\color{corString},
+  morekeywords={dataclass,field},
+}
+\lstdefinestyle{html}{
+  language=HTML,
+  keywordstyle=\color{corChave},
+  stringstyle=\color{corString},
+  commentstyle=\color{corComent}\itshape,
+}
+
+\newcommand{\status}[1]{\texttt{#1}}
+
+% =====================================================================
+\title{\textbf{Verificador de Contestação --- Fase 1}\\[2mm]
+\large Relatório de execução: arquitetura, funcionamento e saída}
+\author{Camada determinística (sem LLM)\\
+\small Repositório: \url{https://github.com/gbsgubi/verificador-contestacao}}
+\date{\today}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+\noindent Este documento descreve o script de verificação de \textbf{minutas de
+contestação} em ações previdenciárias de aposentadoria especial, construído na
+\emph{Fase 1} (camada determinística, sem qualquer modelo de linguagem). São
+apresentados: a arquitetura e o funcionamento do script, a forma de execução,
+os \textbf{exemplos de minuta} usados como entrada (HTML nativo do SAPIENS e o
+texto extraído do PDF) e, sobretudo, a \textbf{saída} produzida --- nas
+representações de terminal e JSON --- com a interpretação do veredito.
+\end{abstract}
+
+\tableofcontents
+\bigskip
+
+% =====================================================================
+\section{Visão geral}
+
+A ferramenta recebe uma minuta de contestação (gerada no SAPIENS a partir do
+modelo padrão n\textsuperscript{o} 544316, nativamente HTML e tipicamente
+exportada em PDF) e devolve um \textbf{diagnóstico de aprovação ou reprovação},
+apontando os problemas, antes de o estagiário enviá-la ao procurador.
+
+A arquitetura final prevê duas camadas: uma \textbf{determinística} (regras
+explícitas, auditáveis e testáveis) e outra de \textbf{raciocínio} (LLM). Este
+relatório trata exclusivamente da camada determinística, que cobre verificações
+de \emph{presença/ausência} e de \emph{padrão textual}.
+
+\subsection{O que esta fase verifica}
+\begin{itemize}[leftmargin=1.4em]
+  \item \textbf{Bloco 1 --- Estrutural:} tipo de endereçamento (JEF
+        $\times$ Justiça Federal comum); campos obrigatórios (NB, DER, número do
+        processo, nome do autor, tipo de benefício); marcações de edição não
+        removidas (colchetes, \emph{placeholders}, instruções imperativas e
+        destaque amarelo no HTML).
+  \item \textbf{Bloco 2 --- Preliminares (presença):} detecta se cada uma das
+        dez preliminares está \status{PRESENTE} ou \status{AUSENTE}; e a exceção
+        determinística JEF + Renúncia aos 60 SM ausente $\Rightarrow$
+        \status{ERRO}.
+  \item \textbf{Bloco 6 --- Redistribuição:} sinaliza (nunca como erro) os
+        perfis \status{VIGILANTE}, \status{SAÚDE} e \status{PROFESSOR}.
+  \item \textbf{Teses (Blocos 3/4/5):} apenas cataloga as teses padronizadas
+        presentes (\texttt{CTN-}, \texttt{DIVESP-NOTA-}, \ldots).
+\end{itemize}
+
+% =====================================================================
+\section{Arquitetura e funcionamento}
+
+O processamento é um \emph{pipeline} de quatro etapas, orquestrado por
+\texttt{src/verificador.py}:
+
+\begin{enumerate}[leftmargin=1.6em]
+  \item \textbf{Extração} (\texttt{extractor.py}): \texttt{pdfplumber} para PDF e
+        \texttt{BeautifulSoup} para HTML. No HTML, os destaques amarelos (classe
+        CSS \texttt{amarelo} ou \texttt{style} com fundo amarelo) são detectados
+        diretamente; no PDF, o amarelo vira texto comum e a detecção é apenas
+        textual.
+  \item \textbf{Segmentação} (\texttt{segmenter.py}): divide o texto em seções
+        (\textsc{síntese}, \textsc{preliminares}, \textsc{mérito}, \ldots) e
+        extrai os blocos de período/agente, produzindo o objeto \texttt{Minuta}.
+  \item \textbf{Regras} (\texttt{src/rules/}): cada verificação implementa a
+        interface comum \texttt{Regra} e é coletada por um \emph{registry}.
+  \item \textbf{Relatório} (\texttt{report.py}): agrega os \texttt{Resultado}s,
+        calcula o veredito e serializa em JSON e em texto para o terminal.
+\end{enumerate}
+
+\begin{table}[h]
+\centering
+\small
+\begin{tabular}{@{}lp{10.2cm}@{}}
+\toprule
+\textbf{Arquivo} & \textbf{Responsabilidade} \\
+\midrule
+\texttt{src/utils.py}            & Normalização de texto (sem acentos, minúsculas) e busca. \\
+\texttt{src/extractor.py}        & Extração de PDF/HTML; detecção de amarelo no HTML. \\
+\texttt{src/segmenter.py}        & Segmentação em seções; objeto \texttt{Minuta}. \\
+\texttt{src/report.py}           & \texttt{Resultado}/\texttt{Relatorio}; veredito; JSON e terminal. \\
+\texttt{src/verificador.py}      & Orquestrador do pipeline + interface de linha de comando. \\
+\texttt{src/rules/\_\_init\_\_.py} & Interface \texttt{Regra} + \emph{registry} de regras. \\
+\texttt{src/rules/estrutural.py} & Bloco 1. \\
+\texttt{src/rules/preliminares.py} & Bloco 2 (presença + exceção JEF). \\
+\texttt{src/rules/redistribuicao.py} & Bloco 6. \\
+\texttt{src/rules/teses.py}      & Catalogação de teses. \\
+\texttt{src/rules/llm\_stubs.py} & Pontos de extensão para a fase do LLM. \\
+\bottomrule
+\end{tabular}
+\caption{Módulos do projeto e suas responsabilidades.}
+\end{table}
+
+\subsection{A interface comum de regra}
+Toda verificação --- determinística agora ou baseada em LLM no futuro --- segue
+a mesma interface, o que permite plugar novas regras sem alterar o orquestrador:
+
+\begin{lstlisting}[style=py]
+class Regra(ABC):
+    id: str = ""          # identificador estável (ex.: "1.3-marcacoes-edicao")
+    bloco: str = ""       # rótulo do bloco, para agrupar no relatório
+    descricao: str = ""   # o que a regra checa
+    requer_llm: bool = False
+
+    @abstractmethod
+    def verificar(self, minuta: Minuta) -> list[Resultado]:
+        """Aplica a regra à minuta e devolve uma lista de resultados."""
+        raise NotImplementedError
+
+
+def registrar(cls):           # decorador que registra a regra no registry
+    _REGISTRO.append(cls)
+    return cls
+\end{lstlisting}
+
+% =====================================================================
+\section{Como executar}
+
+\subsection{Demonstração de um clique}
+O script \texttt{demo.ps1} (Windows/PowerShell) cria o ambiente virtual se
+necessário, instala as dependências e roda o verificador sobre a minuta de teste
+(PDF e HTML):
+
+\begin{lstlisting}[style=terminal]
+powershell -ExecutionPolicy Bypass -File .\demo.ps1
+\end{lstlisting}
+
+\subsection{Linha de comando}
+\begin{lstlisting}[style=terminal]
+# relatório legível no terminal
+python -m src.verificador tests/fixtures/minuta_teste.pdf
+
+# formato HTML nativo do SAPIENS
+python -m src.verificador tests/fixtures/minuta_teste.html
+
+# gravar o relatório em JSON
+python -m src.verificador tests/fixtures/minuta_teste.pdf --json saida.json
+\end{lstlisting}
+
+\noindent O \textbf{código de saída} é \texttt{1} quando o veredito é
+\status{REPROVADO} e \texttt{0} quando \status{APROVADO} --- útil em automações.
+
+% =====================================================================
+\section{Exemplos de minuta (entrada)}
+
+A minuta de teste é \emph{fictícia}: simula um caso no \textbf{JEF}, com dois
+períodos especiais requeridos (ruído de 06/03/1997 a 31/12/2002 e calor de
+01/01/2003 a 18/11/2010), e contém erros plantados de propósito --- em especial
+uma anotação de edição em amarelo não removida.
+
+\subsection{Formato HTML (nativo do SAPIENS)}
+\begin{lstlisting}[style=html]
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<style>
+  body { font-family: "Times New Roman", Times, serif; font-size: 12pt; }
+  .titulo { text-align: center; font-weight: bold; text-transform: uppercase; }
+  .secao { font-weight: bold; text-transform: uppercase; }
+  .subsecao { font-weight: bold; }
+  table { border-collapse: collapse; width: 100%; }
+  td, th { border: 1px solid #000; padding: 5px 7px; vertical-align: top; }
+  .rotulo { font-weight: bold; width: 22%; background: #f0f0f0; }
+  .amarelo { background: #fff200; }   /* destaque a ser removido */
+</style>
+</head>
+<body>
+
+<p class="indent">EXCELENTÍSSIMO(A) SENHOR(A) DOUTOR(A) JUIZ(A) FEDERAL DA 10ª
+VARA FEDERAL DO JUIZADO ESPECIAL FEDERAL DA SUBSEÇÃO JUDICIÁRIA DE SÃO PAULO - SP</p>
+
+<p class="right">Processo nº 5001234-56.2024.4.03.6183<br>
+NUP: 01032.456789/2024-11<br>
+NB: 46/123.456.789-0<br>
+DER: 14/02/2022</p>
+
+<p class="indent">O <strong>INSTITUTO NACIONAL DO SEGURO SOCIAL - INSS</strong>,
+autarquia federal já qualificada nos autos do processo em epígrafe, que lhe move
+<strong>JOÃO DA SILVA SANTOS</strong>, vem, respeitosamente, [...] apresentar</p>
+
+<p class="titulo">CONTESTAÇÃO</p>
+
+<p class="secao">I - SÍNTESE DA DEMANDA</p>
+<p class="indent">Trata-se de ação em que pleiteia a parte autora a concessão do
+benefício de aposentadoria especial após a conversão de tempo especial em comum,
+alegando exposição a agentes nocivos nos períodos de 06/03/1997 a 31/12/2002 e de
+01/01/2003 a 18/11/2010.</p>
+
+<p class="secao">II - PRELIMINARES</p>
+
+<p class="subsecao">II.1 - Do Juízo 100% Digital</p>
+<p class="indent">O INSS concorda com a tramitação na modalidade "Juízo 100%
+Digital" [...] (art. 183, §1º, do CPC c/c art. 5º, da Lei nº 11.419/2006).</p>
+
+<p class="subsecao">II.2 - Da Audiência de Conciliação</p>
+<p class="indent">[...] o INSS informa não possuir interesse na realização de
+audiência de conciliação (art. 334, §4º, II, CPC/2015).</p>
+
+<p class="subsecao">II.3 - Da Renúncia ao Valor Excedente a 60 Salários-Mínimos</p>
+<p class="indent">Tratando-se de feito que tramita perante o Juizado Especial
+Federal, é necessário que a parte autora renuncie expressamente ao montante que
+ultrapasse sessenta salários mínimos (art. 3º, §2º, da Lei n.º 10.259/2001) [...]</p>
+
+<p class="subsecao">II.4 - Da Decadência</p>
+<p class="indent">Considerando o fato de ter decorrido mais de 10 (dez) anos [...]
+decaiu o direito da parte autora de revisar o ato de concessão de seu benefício.</p>
+
+<!-- ERRO PLANTADO: destaque amarelo (instrução de edição) não removido -->
+<p class="amarelo">[VERIFICAR: deixar a preliminar de decadência somente quando
+contabilizar 10 anos da data de ajuizamento até a presente data]</p>
+
+<p class="secao">III - DO MÉRITO</p>
+
+<p class="subsecao">III.1 - Período de 06/03/1997 a 31/12/2002 - Agente: Ruído</p>
+<table>
+  <tr><td class="rotulo">Período(s):</td><td>06/03/1997 a 31/12/2002</td></tr>
+  <tr><td class="rotulo">Prova apresentada:</td>
+      <td>PPP de fls. 45/46 do PA (data de emissão: 12/03/2019)</td></tr>
+  <tr><td class="rotulo">Fundamentos da defesa:</td><td>
+    <strong>Questões Prejudiciais / Vícios Formais do PPP:</strong><br>
+    1. A parte autora não comprova que o vistor do PPP possua poderes de
+       representação da empresa.<br>
+    <strong>Agentes Nocivos:</strong><br>
+    1. Exposição ao ruído dentro do limite de tolerância - 90 dB(A).<br>
+    2. Não há responsável técnico pelos registros ambientais no período [...]<br>
+    3. A metodologia de avaliação informada não atende à legislação. Para
+       períodos entre 03/12/1998 e 18/11/2003, [...] devem obediência à NR-15.
+  </td></tr>
+</table>
+
+<p class="subsecao">III.2 - Período de 01/01/2003 a 18/11/2010 - Agente: Calor</p>
+<table>
+  <tr><td class="rotulo">Período(s):</td><td>01/01/2003 a 18/11/2010</td></tr>
+  <tr><td class="rotulo">Prova apresentada:</td>
+      <td>PPP de fls. 45/46 do PA (data de emissão: 12/03/2019)</td></tr>
+  <tr><td class="rotulo">Fundamentos da defesa:</td><td>
+    <strong>Agentes Nocivos:</strong><br>
+    1. A exposição é inferior a 25ºC (patamar mínimo do Anexo 3 da NR-15 [...]).<br>
+    2. Não há responsável técnico [...] exigível a partir de 14/10/1996.<br>
+    3. As medições devem ser feitas em "IBUTG" (Anexo 3 da NR-15).
+  </td></tr>
+</table>
+
+<p class="secao">IV - OUTROS FUNDAMENTOS</p>
+<p class="indent">Fica vedada a conversão de tempo especial em comum para períodos
+posteriores a 13/11/2019 (Art. 25, §2º, da EC nº 103/2019 [...]).</p>
+
+<p class="secao">V - DOS PEDIDOS</p>
+<p>a) o acolhimento das preliminares arguidas;</p>
+<p>b) no mérito, a total improcedência dos pedidos; [...]</p>
+
+<p class="assinatura">_______________________________________<br>
+Procurador Federal</p>
+</body>
+</html>
+\end{lstlisting}
+
+\noindent\textit{Observação:} o trecho com a classe \texttt{amarelo} é o erro
+plantado de \emph{alta prioridade} --- uma instrução de edição que deveria ter
+sido removida antes do envio.
+
+\subsection{Texto extraído do PDF}
+A mesma minuta em PDF, após a extração com \texttt{pdfplumber}, produz o texto
+plano abaixo (o destaque amarelo deixa de existir, mas o padrão textual
+--- colchetes e a instrução ``VERIFICAR'' / ``deixar a preliminar'' --- permanece
+detectável):
+
+\begin{lstlisting}[style=terminal]
+EXCELENTÍSSIMO(A) SENHOR(A) DOUTOR(A) JUIZ(A) FEDERAL DA 10ª VARA FEDERAL DO
+JUIZADO ESPECIAL FEDERAL DA SUBSEÇÃO JUDICIÁRIA DE SÃO PAULO - SP
+Processo nº 5001234-56.2024.4.03.6183
+NUP: 01032.456789/2024-11
+NB: 46/123.456.789-0
+DER: 14/02/2022
+O INSTITUTO NACIONAL DO SEGURO SOCIAL - INSS [...], que lhe move JOÃO DA SILVA
+SANTOS, [...] apresentar CONTESTAÇÃO [...]
+
+I - SÍNTESE DA DEMANDA
+Trata-se de ação em que pleiteia a parte autora a concessão do benefício de
+aposentadoria especial após a conversão de tempo especial em comum, alegando
+exposição a agentes nocivos nos períodos de 06/03/1997 a 31/12/2002 e de
+01/01/2003 a 18/11/2010.
+
+II - PRELIMINARES
+II.1 - Do Juízo 100% Digital [...]
+II.2 - Da Audiência de Conciliação [...]
+II.3 - Da Renúncia ao Valor Excedente a 60 Salários-Mínimos [...]
+II.4 - Da Decadência [...] decaiu o direito da parte autora de revisar o ato de
+concessão de seu benefício.
+[VERIFICAR: deixar a preliminar de decadência somente quando contabilizar 10
+anos da data de ajuizamento até a presente data]
+
+III - DO MÉRITO
+III.1 - Período de 06/03/1997 a 31/12/2002 - Agente: Ruído
+Período(s): 06/03/1997 a 31/12/2002
+Prova apresentada: PPP de fls. 45/46 do PA (data de emissão: 12/03/2019)
+Fundamentos da defesa: [...] 1. Exposição ao ruído dentro do limite de
+tolerância - 90 dB(A). [...]
+III.2 - Período de 01/01/2003 a 18/11/2010 - Agente: Calor [...]
+
+IV - OUTROS FUNDAMENTOS [...]
+V - DOS PEDIDOS [...]
+São Paulo, 10 de março de 2025.
+_______________________________________
+Procurador Federal
+\end{lstlisting}
+
+% =====================================================================
+\section{Saída da execução}
+
+Esta é a parte central. A ferramenta produz duas representações do mesmo
+relatório: uma \textbf{legível no terminal} (agrupada por bloco, com veredito no
+topo) e uma \textbf{JSON} estruturada.
+
+\subsection{Representação no terminal}
+\begin{lstlisting}[style=terminal]
+======================================================================
+  VEREDITO: REPROVADO
+  Erros: 1   |   Pontos de verificação manual: 0
+======================================================================
+
+### Bloco 1 - Estrutural
+  [INFO] Tipo de endereçamento (JEF x Justiça Federal comum)
+      Endereçamento identificado: JEF (Juizado Especial Federal).
+      evidência: ...feito que tramita perante o Juizado Especial Federal...
+  [OK] Campo obrigatório: NB
+      NB presente.
+      evidência: ...NUP: 01032.456789/2024-11 NB: 46/123.456.789-0 DER: 14/02/2022...
+  [OK] Campo obrigatório: DER
+      DER presente.
+  [OK] Campo obrigatório: Número do processo
+      Número do processo presente.
+      evidência: ...Processo nº 5001234-56.2024.4.03.6183 NUP: 01032.456789/2024-11...
+  [OK] Campo obrigatório: Nome do autor
+      Nome do autor presente.
+      evidência: ...que lhe move JOÃO DA SILVA SANTOS, vem, respeitosamente...
+  [OK] Campo obrigatório: Tipo de benefício
+      Tipo de benefício presente.
+      evidência: ...a concessão do benefício de aposentadoria especial...
+  [ERRO] Marcações de edição não removidas (colchetes, placeholders, instruções, amarelo)
+      Há 2 marcação(ões) de edição não removida(s) na minuta — devem ser
+      eliminadas antes do envio.
+      evidência: instrução remanescente: "...[VERIFICAR: deixar a preliminar de
+      decadência some..." | instrução remanescente: "...deixar a preliminar de
+      decadência somente quando contabiliz..."
+
+### Bloco 2 - Preliminares (presença)
+  [INFO] Preliminar: Juízo 100% Digital            PRESENTE.
+  [INFO] Preliminar: Audiência de Conciliação      PRESENTE.
+  [INFO] Preliminar: Renúncia aos 60 Salários-Mínimos   PRESENTE.
+  [INFO] Preliminar: Decadência                    PRESENTE.
+  [INFO] Preliminar: Prescrição                    AUSENTE.
+  [INFO] Preliminar: Coisa Julgada                 AUSENTE.
+  [INFO] Preliminar: Litispendência                AUSENTE.
+  [INFO] Preliminar: PPP não apresentado administrativamente   AUSENTE.
+  [INFO] Preliminar: Períodos reconhecidos administrativamente AUSENTE.
+  [INFO] Preliminar: Petição inicial inepta        AUSENTE.
+  [OK] Renúncia aos 60 SM obrigatória quando o juízo é o JEF
+      Processo no JEF e preliminar de Renúncia aos 60 SM presente.
+
+### Bloco 6 - Redistribuição
+  [OK] Indício de categoria vigilante/vigia/guarda/policial
+      Sem indício de categoria vigilante/vigia/guarda/policial.
+  [OK] Indício de profissional/ambiente de saúde + agente biológico
+      Sem indício combinado de profissional de saúde e agente biológico.
+  [OK] Indício de professor com período posterior a 1981
+      Sem indício de professor em período posterior a 1981.
+
+### Teses presentes (Blocos 3/4/5 - catalogação)
+  [INFO] Catalogação das teses padronizadas presentes (CTN-/DIVESP- etc.)
+      Nenhuma tese padronizada (CTN-/DIVESP-) encontrada no texto. A minuta de
+      teste usa fundamentos em prosa, sem códigos de tese.
+
+----------------------------------------------------------------------
+  VERIFICAÇÕES ADIADAS PARA A FASE DO LLM (não executadas):
+   - [3.x-compat-tese-agente-periodo] Compatibilidade tese × agente × período
+   - [2.8-situacoes-ppp] Distinção entre as três situações de PPP não apresentado
+   - [2.45-decadencia-prescricao-datas] Cabimento de decadência/prescrição por datas
+   - [1.4-cobertura-periodos-inicial] Cobertura dos períodos requeridos na inicial
+\end{lstlisting}
+
+\subsection{Representação JSON}
+Cada verificação é um objeto
+\texttt{\{ id, bloco, descricao, status, mensagem, evidencia \}}, com
+\texttt{status} $\in$ \{\status{OK}, \status{ERRO}, \status{VERIFICAR},
+\status{INFO}\}. Abaixo, o cabeçalho e os itens mais relevantes (saída
+abreviada):
+
+\begin{lstlisting}[style=json]
+{
+  "veredito": "REPROVADO",
+  "total_erros": 1,
+  "total_verificar": 0,
+  "verificacoes": [
+    {
+      "id": "1.1-enderecamento",
+      "bloco": "Bloco 1 - Estrutural",
+      "descricao": "Tipo de endereçamento (JEF x Justiça Federal comum)",
+      "status": "INFO",
+      "mensagem": "Endereçamento identificado: JEF (Juizado Especial Federal).",
+      "evidencia": "...tramita perante o Juizado Especial Federal, é necessário..."
+    },
+    {
+      "id": "1.3-marcacoes-edicao",
+      "bloco": "Bloco 1 - Estrutural",
+      "descricao": "Marcações de edição não removidas (colchetes, placeholders, instruções, amarelo)",
+      "status": "ERRO",
+      "mensagem": "Há 2 marcação(ões) de edição não removida(s) na minuta — devem ser eliminadas antes do envio.",
+      "evidencia": "instrução remanescente: \"...[VERIFICAR: deixar a preliminar de decadência some...\" | ..."
+    },
+    {
+      "id": "2.presenca:prescricao",
+      "bloco": "Bloco 2 - Preliminares (presença)",
+      "descricao": "Preliminar: Prescrição",
+      "status": "INFO",
+      "mensagem": "AUSENTE.",
+      "evidencia": null
+    },
+    {
+      "id": "2.3-renuncia-jef",
+      "bloco": "Bloco 2 - Preliminares (presença)",
+      "descricao": "Renúncia aos 60 SM obrigatória quando o juízo é o JEF",
+      "status": "OK",
+      "mensagem": "Processo no JEF e preliminar de Renúncia aos 60 SM presente.",
+      "evidencia": null
+    }
+  ]
+}
+\end{lstlisting}
+
+% =====================================================================
+\section{Interpretação dos resultados}
+
+A regra do veredito é simples: \textbf{\status{REPROVADO}} se houver qualquer
+\status{ERRO}; caso contrário \textbf{\status{APROVADO}}, listando os
+\status{VERIFICAR} pendentes. Na minuta de teste o veredito é
+\status{REPROVADO} por causa de \emph{um} erro: a marcação de edição não
+removida.
+
+\begin{table}[h]
+\centering
+\small
+\begin{tabular}{@{}llp{7.6cm}@{}}
+\toprule
+\textbf{Item} & \textbf{Status} & \textbf{Leitura} \\
+\midrule
+Endereçamento & \status{INFO}  & Identificado como JEF, coerente com o nº do processo. \\
+Campos obrigatórios & \status{OK} & NB, DER, processo, autor e benefício presentes. \\
+Marcação de edição & \status{ERRO} & Instrução ``VERIFICAR/decadência'' não removida. \\
+Preliminares & \status{INFO} & 4 presentes; Prescrição e outras ausentes (fato, não juízo). \\
+Renúncia 60 SM (JEF) & \status{OK} & Presente, como exigido no JEF. \\
+Redistribuição & \status{OK} & Sem perfis VIGILANTE/SAÚDE/PROFESSOR. \\
+Teses padronizadas & \status{INFO} & Nenhuma (a minuta usa prosa). \\
+\bottomrule
+\end{tabular}
+\caption{Resumo da leitura do relatório sobre a minuta de teste.}
+\end{table}
+
+\subsection{O que ficou para a fase do LLM}
+Algumas verificações exigem raciocínio contextual e foram deixadas como
+\emph{stubs} documentados (mesma interface \texttt{Regra}), portanto
+\textbf{não} executadas nesta fase:
+\begin{itemize}[leftmargin=1.4em]
+  \item compatibilidade entre tese, período e agente nocivo (marcos temporais
+        de ruído/calor) --- p.\,ex.\ a tese de ruído na fronteira de 03/12/1998;
+  \item distinção entre as três situações de PPP não apresentado;
+  \item cabimento de decadência/prescrição segundo datas e tipo de ação
+        (concessão $\times$ revisão);
+  \item cobertura dos períodos requeridos na petição inicial.
+\end{itemize}
+
+Por isso, propositalmente, esta fase \emph{não} sinaliza a incompatibilidade da
+tese de ruído nem a possível decadência indevida --- ambas dependem da camada de
+LLM.
+
+\end{document}
