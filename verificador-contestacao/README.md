@@ -16,7 +16,11 @@ de rede. Toda verificação é regra explícita, auditável e testável.
 
 ## O que a ferramenta verifica nesta fase
 
-Apenas verificações de **presença/ausência** e de **padrão textual**:
+Tudo o que é decidível com **regex + aritmética de datas sobre o texto da
+própria minuta**. O critério é estrito: se a certeza do erro exigir contexto
+externo (petição inicial, PA) ou raciocínio (período que cruza marco
+temporal), a regra **não** acusa `ERRO` — no máximo marca `VERIFICAR` e deixa
+a decisão para a fase do LLM.
 
 ### Bloco 1 — Estrutural
 - **1.1 Endereçamento**: identifica JEF (contém "JUIZADO ESPECIAL FEDERAL") ou
@@ -30,23 +34,53 @@ Apenas verificações de **presença/ausência** e de **padrão textual**:
   CSS `amarelo` ou `style` com fundo amarelo). Qualquer achado gera `ERRO`.
   A linha de assinatura (só sublinhados) é ignorada para evitar falso positivo.
 
-### Bloco 2 — Preliminares (somente PRESENÇA)
-- Detecta se cada preliminar está **PRESENTE** ou **AUSENTE** (Juízo 100%
-  Digital, Audiência de Conciliação, Renúncia aos 60 SM, Decadência, Prescrição,
-  Coisa Julgada, Litispendência, PPP não apresentado, Períodos reconhecidos
-  administrativamente, Petição inicial inepta). **Não** decide ainda se a
-  preliminar *deveria* estar presente (isso é da fase do LLM).
-- **Exceção determinística**: endereçamento JEF + Renúncia aos 60 SM ausente →
-  `ERRO` (correlação puramente estrutural).
+### Bloco 2 — Preliminares
+- Cataloga a **presença/ausência** de cada preliminar padronizada (INFO).
+- **2.1/2.2 Sempre obrigatórias**: Juízo 100% Digital e Audiência de
+  Conciliação ausentes → `ERRO`.
+- **2.3 Renúncia aos 60 SM** (bidirecional): ausente no JEF → `ERRO`;
+  presente na Justiça Federal comum → `ERRO`.
+- **2.4 Decadência por datas**: preliminar presente quando `ano do
+  ajuizamento − ano da DER < 10` → `ERRO` (o prazo de 10 anos é impossível,
+  pois a primeira prestação nunca antecede a DER). O ano de ajuizamento vem de
+  "ajuizada em AAAA" ou do campo AAAA do número CNJ. A decadência **ausente**
+  quando cabível continua na fase do LLM.
 
-### Bloco 6 — Redistribuição (sugestão, nunca erro)
-- **VIGILANTE**: vigilante, vigia, guarda, policial.
-- **SAÚDE**: profissional/ambiente de saúde + menção a agente biológico.
-- **PROFESSOR**: professor com indício de período posterior a 1981.
+### Bloco 3 — Tabela de agentes nocivos (determinístico)
+- **3.5 Ruído — limite de tolerância**: 80 dB até 05/03/1997; 90 dB de
+  06/03/1997 a 18/11/2003; 85 dB(A) NEN a partir de 19/11/2003. Valor errado
+  com período inteiramente numa janela → `ERRO`; período cruzando marco →
+  `VERIFICAR` (fase do LLM).
+- **3.5 Ruído — metodologia**: NR-15 invocada para período inteiramente
+  posterior a 18/11/2003 (sem NEN/NHO-01) → `ERRO`.
+- **3.6 Calor — limiar**: 28 ºC até 05/03/1997; 25 ºC de 06/03/1997 a
+  10/12/2019; 24,7 ºC a partir de 11/12/2019. Mesma lógica de janela única.
+- **3.3 Vício CREA/CRM**: qualquer uso do vício de falta de registro no
+  CREA/CRM → `ERRO` (o manual aboliu esse vício).
+- **3.17 Vedação à conversão (EC 103/2019)**: período que ultrapassa
+  13/11/2019 sem menção à vedação → `ERRO`. A presença da vedação sem período
+  que a exija **não** é erro (fundamento padrão tolerado).
+- **3.1 Consistência síntese × tabela**: períodos enumerados na síntese da
+  demanda divergentes dos da tabela do mérito (omissão ou impugnação não
+  pedida) → `ERRO`. A checagem contra a petição inicial em si fica no LLM.
 
-### Teses presentes (Blocos 3/4/5 — somente CATALOGAÇÃO)
+### Bloco 6 — Redistribuição (com gradação)
+- **VIGILANTE / SAÚDE / PROFESSOR pós-1981**: quando o perfil está declarado
+  na **síntese ou no campo "Agente:"** da tabela (sinal forte), a contestação
+  padrão é indevida → `ERRO`. Termo solto em outro trecho → apenas sugestão
+  (INFO).
+- **6.4 Sem pedido de tempo especial**: síntese declarando que a inicial não
+  pede tempo especial → `ERRO` (caso de redistribuição).
+
+### Bloco 7 — Indeferimento forçado
+- **7.1**: se o próprio texto registra "Possui tempo especial? NÃO" + ausência
+  de análise técnica, a contestação padrão é indevida → `ERRO` (deveria ser a
+  minuta nº 618527). Sem esses sinais no texto, nada é acusado (a informação
+  vive no PA).
+
+### Teses presentes (Blocos 3/4/5 — CATALOGAÇÃO)
 - Lista as teses padronizadas presentes (nomes começando por `CTN-`,
-  `DIVESP-NOTA-`, etc.). **Não** avalia compatibilidade com agente/período.
+  `DIVESP-NOTA-`, etc.).
 
 ---
 
@@ -55,17 +89,15 @@ Apenas verificações de **presença/ausência** e de **padrão textual**:
 Estão documentados como stubs em [`src/rules/llm_stubs.py`](src/rules/llm_stubs.py),
 seguindo a **mesma interface `Regra`** — basta implementá-los e registrá-los:
 
-- **Compatibilidade tese × agente × período** (marcos temporais de ruído,
-  calor, etc.). → corresponde ao **Erro 2** do gabarito.
+- **Compatibilidade tese × agente em períodos que cruzam marcos temporais**
+  (ex.: ruído na fronteira de 03/12/1998 — **Erro 2** do gabarito da minuta de
+  teste) e demais agentes (biológico, químico, eletricidade, ...).
 - **Distinção entre as três situações de PPP não apresentado.**
-- **Decadência/prescrição condicionadas a datas e tipo de ação** (concessão x
-  revisão). → corresponde aos **Erros 4 e 5** do gabarito.
-- **Cobertura dos períodos requeridos na petição inicial** (exige ler a inicial,
-  que não está na minuta).
-
-> Por isso, nesta fase o script **não** detecta o Erro 2 (tese de ruído na
-> fronteira de 03/12/1998) nem o Erro 5 (decadência em ação de concessão): ambos
-> dependem da camada de LLM.
+- **Decadência ausente quando cabível, concessão × revisão e prescrição**
+  (→ **Erro 4** do gabarito; o caso "decadência presente com prazo impossível"
+  já é determinístico).
+- **Cobertura dos períodos requeridos na petição inicial** (exige ler a
+  inicial; a consistência interna síntese × tabela já é determinística).
 
 ---
 

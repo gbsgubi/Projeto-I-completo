@@ -69,7 +69,7 @@ _CAMPOS = [
     (
         "Tipo de benefício",
         r"(concess[aã]o|revis[aã]o|aposentadoria especial|"
-        r"tempo de contribui[cç][aã]o)",
+        r"tempo de contribui[cç][aã]o|tempo especial)",
     ),
 ]
 

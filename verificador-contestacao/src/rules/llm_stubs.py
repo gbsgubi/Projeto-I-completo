@@ -33,15 +33,17 @@ class _StubLLM(Regra):
 class CompatibilidadeTeseAgentePeriodo(_StubLLM):
     """Bloco 3 — Compatibilidade entre tese, período e agente nocivo.
 
-    Deve avaliar os marcos temporais de cada agente (ruído, calor, biológico,
-    etc.) e decidir se a tese declarada cobre corretamente o período — inclusive
-    quando o período cruza uma fronteira temporal (ex.: ruído na fronteira de
-    03/12/1998). Corresponde ao "Erro 2" do gabarito de teste.
+    A parte de JANELA ÚNICA de ruído/calor (limiar e metodologia quando o
+    período está inteiramente dentro de um marco temporal) já é coberta de
+    forma determinística em ``agentes.py``. Fica para o LLM o que exige
+    raciocínio: períodos que CRUZAM uma fronteira temporal (ex.: ruído na
+    fronteira de 03/12/1998 — "Erro 2" do gabarito de teste) e os demais
+    agentes (biológico, químico, eletricidade, etc.).
     """
 
     id = "3.x-compat-tese-agente-periodo"
     bloco = "Bloco 3 - Agentes nocivos (LLM)"
-    descricao = "Compatibilidade tese × agente × período (marcos temporais)"
+    descricao = "Compatibilidade tese × agente em períodos que cruzam marcos e demais agentes"
 
 
 class SituacoesPPPNaoApresentado(_StubLLM):
@@ -59,15 +61,17 @@ class SituacoesPPPNaoApresentado(_StubLLM):
 class DecadenciaPrescricaoPorDatas(_StubLLM):
     """Bloco 2.4/2.5 — Lógica condicional de decadência/prescrição por datas.
 
-    Deve decidir, a partir de DER, primeira prestação, data de ajuizamento e
-    tipo de ação (concessão x revisão), se a preliminar é cabível. Corresponde
-    ao "Erro 5" (decadência em ação de concessão) e ao "Erro 4" (prescrição
-    ausente) do gabarito de teste.
+    O caso "decadência PRESENTE com prazo de 10 anos impossível pelas datas da
+    própria minuta" já é coberto deterministicamente em ``preliminares.py``
+    (regra 2.4-decadencia-datas). Fica para o LLM o que exige dado externo ou
+    raciocínio: decadência AUSENTE quando cabível (depende da data da primeira
+    prestação), a distinção concessão × revisão e a prescrição ("Erro 4" do
+    gabarito de teste).
     """
 
     id = "2.45-decadencia-prescricao-datas"
     bloco = "Bloco 2 - Preliminares (LLM)"
-    descricao = "Cabimento de decadência/prescrição com base em datas e tipo de ação"
+    descricao = "Decadência ausente quando cabível, concessão × revisão e prescrição"
 
 
 class CoberturaPeriodosInicial(_StubLLM):
@@ -75,7 +79,8 @@ class CoberturaPeriodosInicial(_StubLLM):
 
     Exige ler a petição inicial (não está na minuta) para confirmar que todos
     os períodos requeridos estão na tabela e que nenhum período não requerido
-    foi incluído.
+    foi incluído. A consistência INTERNA (síntese da demanda × tabela) já é
+    coberta deterministicamente em ``agentes.py``.
     """
 
     id = "1.4-cobertura-periodos-inicial"

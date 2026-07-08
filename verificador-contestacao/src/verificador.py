@@ -22,7 +22,9 @@ from .segmenter import segmentar
 
 # importar os módulos de regras dispara o registro no registry.
 from .rules import coletar_regras
+from .rules import agentes as _agentes  # noqa: F401
 from .rules import estrutural as _estrutural  # noqa: F401
+from .rules import indeferimento as _indeferimento  # noqa: F401
 from .rules import preliminares as _preliminares  # noqa: F401
 from .rules import redistribuicao as _redistribuicao  # noqa: F401
 from .rules import teses as _teses  # noqa: F401
