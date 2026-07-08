@@ -5,6 +5,14 @@
   font-family: ui-sans-serif, system-ui, "Segoe UI", Roboto, Arial, sans-serif;
 }
 
+/* Fundo da página: gradiente sutil, sem imagem externa. */
+body {
+  background:
+    radial-gradient(1200px 400px at 50% -100px, rgba(29, 78, 216, 0.06), transparent),
+    linear-gradient(to bottom, #f1f5f9, #e2e8f0);
+  background-attachment: fixed;
+}
+
 /* Pulso do grifo quando o item correspondente é clicado no painel. */
 @keyframes pulso-grifo {
   0%   { outline-color: rgba(30, 64, 175, 0.9); outline-offset: 0px; }
@@ -15,3 +23,18 @@
   outline: 3px solid rgba(30, 64, 175, 0.9);
   animation: pulso-grifo 0.8s ease-in-out 2;
 }
+
+/* Entrada suave das telas (upload -> diagnóstico). */
+@keyframes surgir {
+  from { opacity: 0; transform: translateY(6px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.surgir { animation: surgir 0.25s ease-out; }
+
+/* Barra de rolagem fina no painel lateral (WebKit + Firefox). */
+.rolagem-fina { scrollbar-width: thin; scrollbar-color: #cbd5e1 transparent; }
+.rolagem-fina::-webkit-scrollbar { width: 8px; }
+.rolagem-fina::-webkit-scrollbar-thumb {
+  background: #cbd5e1; border-radius: 4px;
+}
+.rolagem-fina::-webkit-scrollbar-thumb:hover { background: #94a3b8; }

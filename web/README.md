@@ -55,8 +55,11 @@ cd web
 - **Tela inicial:** upload por arrastar/soltar (`.pdf`/`.html`) + **galeria** com
   as 15 peças do banco de testes (`contestacao_03.pdf … 17.pdf`), mostrando o
   veredito **esperado** (gabarito) × **obtido** (verificador), com indicador de
-  acerto. Com a camada determinística completa, todas as peças devem bater ✓
-  com o gabarito — uma divergência ✘ indica regressão nas regras.
+  acerto e resumo de acertos após "Verificar todas". Com a camada determinística
+  completa, todas as peças devem bater ✓ com o gabarito — uma divergência ✘
+  indica regressão nas regras.
+- **Deep-link de demonstração:** `http://localhost:8000/?exemplo=17` abre
+  direto o diagnóstico da peça indicada (útil para apresentações).
 - **Tela de diagnóstico** (duas colunas; empilha no mobile):
   - *Esquerda* — o PDF renderizado (PDF.js) com **overlays translúcidos** sobre
     cada evidência localizada: vermelho = `ERRO`, âmbar = `VERIFICAR`,

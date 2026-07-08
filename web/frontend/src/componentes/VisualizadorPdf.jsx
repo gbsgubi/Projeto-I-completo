@@ -23,7 +23,7 @@ function Pagina({ pagina, numero, grifos, hoverId, pulsoId, aoHover }) {
   }, [pagina]);
 
   return (
-    <div className="relative shadow border border-slate-300 bg-white">
+    <div className="relative shadow-md border border-slate-300 bg-white">
       <canvas ref={canvasRef} className="block w-full h-auto" />
 
       {grifos.map(({ resultado, destaque, ehPrimeiro }, i) => {
@@ -61,7 +61,8 @@ function Pagina({ pagina, numero, grifos, hoverId, pulsoId, aoHover }) {
         );
       })}
 
-      <span className="absolute bottom-1 right-2 text-[10px] text-slate-400">
+      <span className="absolute bottom-2 right-2 px-1.5 py-0.5 rounded
+                       bg-slate-900/60 text-white text-[10px] font-medium">
         página {numero}
       </span>
     </div>
@@ -108,7 +109,12 @@ export default function VisualizadorPdf({ url, resultados, filtro, hoverId, puls
   return (
     <div className="flex flex-col gap-4 min-w-0">
       {paginas.length === 0 && (
-        <p className="text-sm text-slate-500 p-6 text-center">Carregando o documento…</p>
+        <div className="bg-white rounded-xl border border-slate-200 shadow-sm p-10
+                        flex flex-col items-center gap-3">
+          <span className="w-8 h-8 rounded-full border-[3px] border-slate-200
+                           border-t-blue-600 animate-spin" aria-hidden />
+          <p className="text-sm text-slate-500">Carregando o documento…</p>
+        </div>
       )}
       {paginas.map((pagina, i) => (
         <Pagina
