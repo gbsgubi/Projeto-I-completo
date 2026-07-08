@@ -1,0 +1,70 @@
+======================================================================
+  VEREDITO: APROVADO
+  Erros: 0   |   Pontos de verificação manual: 0
+======================================================================
+
+### Bloco 1 - Estrutural
+  [INFO] Tipo de endereçamento (JEF x Justiça Federal comum)
+      Endereçamento identificado: JEF (Juizado Especial Federal).
+      evidência: ...) SENHOR(A) DOUTOR(A) JUIZ(A) FEDERAL DA 8ª VARA FEDERAL DO JUIZADO ESPECIAL FEDERAL DA SUBSEÇÃO JUDICIÁRIA DE SÃO PAULO - SP Processo nº 500223...
+  [OK] Campo obrigatório: NB
+      NB presente.
+      evidência: ...esso nº 5002233-11.2024.4.03.6301 NUP: 01050.112233/2024-45 NB: 46/201.334.556-7 DER: 18/05/2023 O INSTITUTO NACIONAL DO SE...
+  [OK] Campo obrigatório: DER
+      DER presente.
+      evidência: ...24.4.03.6301 NUP: 01050.112233/2024-45 NB: 46/201.334.556-7 DER: 18/05/2023 O INSTITUTO NACIONAL DO SEGURO SOCIAL - INSS, au...
+  [OK] Campo obrigatório: Número do processo
+      Número do processo presente.
+      evidência: ...EDERAL DA SUBSEÇÃO JUDICIÁRIA DE SÃO PAULO - SP Processo nº 5002233-11.2024.4.03.6301 NUP: 01050.112233/2024-45 NB: 46/201.334.556-7 DER: 18/05/2...
+  [OK] Campo obrigatório: Nome do autor
+      Nome do autor presente.
+      evidência: ...a federal já qualificada nos autos do processo em epígrafe, que lhe move ANTÔNIO PEREIRA LIMA, vem, respeitosamente, à presença de Vossa Excelência, por...
+  [OK] Campo obrigatório: Tipo de benefício
+      Tipo de benefício presente.
+      evidência: ...A DEMANDA Trata-se de ação em que pleiteia a parte autora a concessão do benefício de aposentadoria especial após a conversão de...
+  [OK] Marcações de edição não removidas (colchetes, placeholders, instruções, amarelo)
+      Nenhuma marcação de edição remanescente detectada.
+
+### Bloco 2 - Preliminares (presença)
+  [INFO] Preliminar: Juízo 100% Digital
+      PRESENTE.
+  [INFO] Preliminar: Audiência de Conciliação
+      PRESENTE.
+  [INFO] Preliminar: Renúncia aos 60 Salários-Mínimos
+      PRESENTE.
+  [INFO] Preliminar: Decadência
+      AUSENTE.
+  [INFO] Preliminar: Prescrição
+      AUSENTE.
+  [INFO] Preliminar: Coisa Julgada
+      AUSENTE.
+  [INFO] Preliminar: Litispendência
+      AUSENTE.
+  [INFO] Preliminar: PPP não apresentado administrativamente
+      AUSENTE.
+  [INFO] Preliminar: Períodos reconhecidos administrativamente
+      AUSENTE.
+  [INFO] Preliminar: Petição inicial inepta
+      AUSENTE.
+  [OK] Renúncia aos 60 SM obrigatória quando o juízo é o JEF
+      Processo no JEF e preliminar de Renúncia aos 60 SM presente.
+
+### Bloco 6 - Redistribuição
+  [OK] Indício de categoria vigilante/vigia/guarda/policial
+      Sem indício de categoria vigilante/vigia/guarda/policial.
+  [OK] Indício de profissional/ambiente de saúde + agente biológico
+      Sem indício combinado de profissional de saúde e agente biológico.
+  [OK] Indício de professor com período posterior a 1981
+      Sem indício de professor em período posterior a 1981.
+
+### Teses presentes (Blocos 3/4/5 - catalogação)
+  [INFO] Catalogação das teses padronizadas presentes (CTN-/DIVESP- etc.)
+      Nenhuma tese padronizada (CTN-/DIVESP-) encontrada no texto. A minuta de teste usa fundamentos em prosa, sem códigos de tese.
+
+----------------------------------------------------------------------
+  VERIFICAÇÕES ADIADAS PARA A FASE DO LLM (não executadas):
+   - [3.x-compat-tese-agente-periodo] Compatibilidade tese × agente × período (marcos temporais)
+   - [2.8-situacoes-ppp] Distinção entre as três situações de PPP não apresentado
+   - [2.45-decadencia-prescricao-datas] Cabimento de decadência/prescrição com base em datas e tipo de ação
+   - [1.4-cobertura-periodos-inicial] Cobertura dos períodos requeridos na petição inicial
+

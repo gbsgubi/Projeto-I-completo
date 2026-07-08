@@ -1,0 +1,1865 @@
+\documentclass[12pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[brazil]{babel}
+\usepackage[margin=2.5cm]{geometry}
+\usepackage{xcolor}
+\usepackage{booktabs}
+\usepackage{longtable}
+\usepackage{array}
+\usepackage{parskip}
+\usepackage{fancyhdr}
+\usepackage{titlesec}
+\usepackage{enumitem}
+
+\definecolor{corOK}{HTML}{1a7a3c}
+\definecolor{corERRO}{HTML}{c0392b}
+\definecolor{corINFO}{HTML}{2471a3}
+\definecolor{corVERIFICAR}{HTML}{d68910}
+\definecolor{corFundoReprovado}{HTML}{fadbd8}
+\definecolor{corFundoAprovado}{HTML}{d5f5e3}
+\definecolor{cinzaClaro}{HTML}{f2f3f4}
+
+\newcommand{\statusOK}[1]{\textcolor{corOK}{\textbf{[OK]}} #1}
+\newcommand{\statusERRO}[1]{\textcolor{corERRO}{\textbf{[ERRO]}} #1}
+\newcommand{\statusINFO}[1]{\textcolor{corINFO}{\textbf{[INFO]}} #1}
+\newcommand{\statusVERIFICAR}[1]{\textcolor{corVERIFICAR}{\textbf{[VERIFICAR]}} #1}
+\newcommand{\status}[1]{\texttt{#1}}
+
+\pagestyle{fancy}
+\fancyhf{}
+\rhead{Verificador de Contestação -- Fase 1}
+\rfoot{Página \thepage}
+\lfoot{Gerado em 07/07/2026}
+
+\titleformat{\section}{\large\bfseries}{}{0em}{}[\titlerule]
+\titleformat{\subsection}{\normalsize\bfseries}{}{0em}{}
+
+\setcounter{tocdepth}{1}
+\setcounter{secnumdepth}{1}
+
+\begin{document}
+
+\begin{center}
+  {\LARGE \textbf{Relatório Consolidado de Verificação de Contestações}}\\[0.4em]
+  {\large Verificador de Contestação --- Fase 1}\\[0.2em]
+  {\small Gerado em 07/07/2026 \quad|\quad 14 contestações verificadas}
+\end{center}
+
+\vspace{0.8em}
+
+\noindent\colorbox{cinzaClaro}{%
+  \begin{minipage}{\dimexpr\linewidth-2\fboxsep}
+    \centering
+    \vspace{0.4em}
+    {\large \textbf{Resumo geral}}\\[0.3em]
+    \textcolor{corOK}{\textbf{10 APROVADA(S)}} \quad|\quad \textcolor{corERRO}{\textbf{4 REPROVADA(S)}}
+    \vspace{0.4em}
+  \end{minipage}%
+}
+
+\vspace{1em}
+
+\begin{longtable}{c p{6.5cm} c c c}
+  \toprule
+  \textbf{Nº} & \textbf{Autor} & \textbf{Veredito} & \textbf{Erros} & \textbf{Verif. manual} \\
+  \midrule
+  \endfirsthead
+  \toprule
+  \textbf{Nº} & \textbf{Autor} & \textbf{Veredito} & \textbf{Erros} & \textbf{Verif. manual} \\
+  \midrule
+  \endhead
+  03 & ANTÔNIO PEREIRA LIMA & \textcolor{corOK}{\textbf{APROVADO}} & 0 & 0 \\
+  04 & MARIA DAS GRAÇAS OLIVEIRA & \textcolor{corOK}{\textbf{APROVADO}} & 0 & 0 \\
+  05 & SEBASTIÃO RODRIGUES DA COSTA & \textcolor{corERRO}{\textbf{REPROVADO}} & 1 & 0 \\
+  06 & CARLOS ALBERTO FONSECA & \textcolor{corOK}{\textbf{APROVADO}} & 0 & 0 \\
+  07 & JOSEFA MARIA DOS SANTOS & \textcolor{corOK}{\textbf{APROVADO}} & 0 & 0 \\
+  08 & PAULO ROBERTO ALVES & \textcolor{corOK}{\textbf{APROVADO}} & 0 & 0 \\
+  09 & ANA CLÁUDIA MENEZES & \textcolor{corOK}{\textbf{APROVADO}} & 0 & 0 \\
+  10 & ROBERTO CARLOS DINIZ & \textcolor{corERRO}{\textbf{REPROVADO}} & 1 & 0 \\
+  11 & FRANCISCO DE ASSIS MOURA & \textcolor{corOK}{\textbf{APROVADO}} & 0 & 0 \\
+  12 & LUIZA HELENA BARROS & \textcolor{corERRO}{\textbf{REPROVADO}} & 1 & 0 \\
+  13 & MARCOS VINÍCIUS TEIXEIRA & \textcolor{corOK}{\textbf{APROVADO}} & 0 & 0 \\
+  14 & RAIMUNDO NONATO SILVA & \textcolor{corOK}{\textbf{APROVADO}} & 0 & 0 \\
+  15 & TEREZA CRISTINA LOPES & \textcolor{corERRO}{\textbf{REPROVADO}} & 1 & 0 \\
+  16 & EDSON LUÍS CAVALCANTE & \textcolor{corOK}{\textbf{APROVADO}} & 0 & 0 \\
+  \bottomrule
+\end{longtable}
+
+\clearpage
+\tableofcontents
+
+
+\clearpage
+\lhead{Contestação 03}
+\section{Contestação 03 --- ANTÔNIO PEREIRA LIMA}
+% -----------------------------------------------------------------------
+% Cabeçalho
+% -----------------------------------------------------------------------
+\begin{center}
+  {\small Processo n.º 5002233-11.2024.4.03.6301 \quad NB: 46/201.334.556-7 \quad DER: 18/05/2023}
+\end{center}
+
+\vspace{0.5em}
+
+\noindent\colorbox{corFundoAprovado}{%
+  \begin{minipage}{\dimexpr\linewidth-2\fboxsep}
+    \centering
+    \vspace{0.3em}
+    {\large \textcolor{corOK}{\textbf{VEREDITO: APROVADO}}}\\
+    Erros: \textbf{0} \quad|\quad Pontos de verificação manual: \textbf{0}
+    \vspace{0.3em}
+  \end{minipage}%
+}
+
+\vspace{1em}
+
+
+% -----------------------------------------------------------------------
+% Bloco 1 - Estrutural
+% -----------------------------------------------------------------------
+\subsection{Bloco 1 --- Estrutural}
+
+\statusINFO{Tipo de endereçamento (JEF x Justiça Federal comum)}\\
+Endereçamento identificado: \textbf{JEF (Juizado Especial Federal)}.\\
+\textit{Evidência: ... SENHOR(A) DOUTOR(A) JUIZ(A) FEDERAL DA 8ª VARA FEDERAL DO JUIZADO ESPECIAL FEDERAL DA SUBSEÇÃO JUDICIÁRIA DE SÃO PAULO - SP Processo nº 500223...}
+
+\medskip
+\statusOK{Campo obrigatório: NB} --- NB presente.
+
+\medskip
+\statusOK{Campo obrigatório: DER} --- DER presente.
+
+\medskip
+\statusOK{Campo obrigatório: Número do processo} --- Número do processo presente.
+
+\medskip
+\statusOK{Campo obrigatório: Nome do autor} --- Nome do autor presente.\\
+\textit{Evidência: ... a federal já qualificada nos autos do processo em epígrafe, que lhe move ANTÔNIO PEREIRA LIMA, vem, respeitosamente, à presença de Vossa Excelência, por...}
+
+\medskip
+\statusOK{Campo obrigatório: Tipo de benefício} --- Tipo de benefício presente.
+
+\medskip
+\statusOK{Marcações de edição não removidas (colchetes, placeholders, instruções, amarelo)}\\
+Nenhuma marcação de edição remanescente detectada.
+
+% -----------------------------------------------------------------------
+% Bloco 2 - Preliminares
+% -----------------------------------------------------------------------
+\subsection{Bloco 2 --- Preliminares (presença)}
+
+\begin{longtable}{p{8.5cm} p{4.5cm}}
+  \toprule
+  \textbf{Preliminar} & \textbf{Status} \\
+  \midrule
+  \endfirsthead
+  \toprule
+  \textbf{Preliminar} & \textbf{Status} \\
+  \midrule
+  \endhead
+  Juízo 100\% Digital                           & \textcolor{corOK}{\textbf{PRESENTE}} \\
+  Audiência de Conciliação                      & \textcolor{corOK}{\textbf{PRESENTE}} \\
+  Renúncia aos 60 Salários-Mínimos              & \textcolor{corOK}{\textbf{PRESENTE}} \\
+  Decadência                                    & AUSENTE \\
+  Prescrição                                    & AUSENTE \\
+  Coisa Julgada                                 & AUSENTE \\
+  Litispendência                                & AUSENTE \\
+  PPP não apresentado administrativamente       & AUSENTE \\
+  Períodos reconhecidos administrativamente     & AUSENTE \\
+  Petição inicial inepta                        & AUSENTE \\
+  \bottomrule
+\end{longtable}
+
+\statusOK{Renúncia aos 60 SM obrigatória quando o juízo é o JEF}\\
+Processo no JEF e preliminar de Renúncia aos 60 SM presente.
+
+% -----------------------------------------------------------------------
+% Bloco 6 - Redistribuição
+% -----------------------------------------------------------------------
+\subsection{Bloco 6 --- Redistribuição}
+
+\statusOK{Indício de categoria vigilante/vigia/guarda/policial} --- Sem indício detectado.
+
+\medskip
+\statusOK{Indício de profissional/ambiente de saúde + agente biológico} --- Sem indício detectado.
+
+\medskip
+\statusOK{Indício de professor com período posterior a 1981} --- Sem indício detectado.
+
+% -----------------------------------------------------------------------
+% Teses
+% -----------------------------------------------------------------------
+\subsection{Teses presentes (Blocos 3/4/5 --- catalogação)}
+
+\statusINFO{Catalogação das teses padronizadas presentes (CTN-/DIVESP- etc.)}\\
+Nenhuma tese padronizada (CTN-/DIVESP-) encontrada no texto.
+
+% -----------------------------------------------------------------------
+% Verificações adiadas
+% -----------------------------------------------------------------------
+\subsection{Verificações adiadas para a fase do LLM}
+
+\begin{itemize}
+  \item \texttt{[3.x]} Compatibilidade tese × agente × período (marcos temporais)
+  \item \texttt{[2.8]} Distinção entre as três situações de PPP não apresentado
+  \item \texttt{[2.45]} Cabimento de decadência/prescrição com base em datas e tipo de ação
+  \item \texttt{[1.4]} Cobertura dos períodos requeridos na petição inicial
+\end{itemize}
+
+
+
+\clearpage
+\lhead{Contestação 04}
+\section{Contestação 04 --- MARIA DAS GRAÇAS OLIVEIRA}
+% -----------------------------------------------------------------------
+% Cabeçalho
+% -----------------------------------------------------------------------
+\begin{center}
+  {\small Processo n.º 5004410-22.2025.4.03.6100 \quad NB: 46/222.111.000-9 \quad DER: 12/04/2024}
+\end{center}
+
+\vspace{0.5em}
+
+\noindent\colorbox{corFundoAprovado}{%
+  \begin{minipage}{\dimexpr\linewidth-2\fboxsep}
+    \centering
+    \vspace{0.3em}
+    {\large \textcolor{corOK}{\textbf{VEREDITO: APROVADO}}}\\
+    Erros: \textbf{0} \quad|\quad Pontos de verificação manual: \textbf{0}
+    \vspace{0.3em}
+  \end{minipage}%
+}
+
+\vspace{1em}
+
+
+% -----------------------------------------------------------------------
+% Bloco 1 - Estrutural
+% -----------------------------------------------------------------------
+\subsection{Bloco 1 --- Estrutural}
+
+\statusINFO{Tipo de endereçamento (JEF x Justiça Federal comum)}\\
+Endereçamento identificado: \textbf{Justiça Federal comum (sem menção a JEF)}.\\
+\textit{Evidência: ... EXCELENTÍSSIMO(A) SENHOR(A) DOUTOR(A) JUIZ(A) FEDERAL DA 3ª VARA FEDERAL DA SUBSEÇÃO JUDICIÁRIA DE SÃO PAULO - SP Processo nº 500441...}
+
+\medskip
+\statusOK{Campo obrigatório: NB} --- NB presente.
+
+\medskip
+\statusOK{Campo obrigatório: DER} --- DER presente.
+
+\medskip
+\statusOK{Campo obrigatório: Número do processo} --- Número do processo presente.
+
+\medskip
+\statusOK{Campo obrigatório: Nome do autor} --- Nome do autor presente.\\
+\textit{Evidência: ... a federal já qualificada nos autos do processo em epígrafe, que lhe move MARIA DAS GRAÇAS OLIVEIRA, vem, respeitosamente, à presença de Vossa Excelência, por...}
+
+\medskip
+\statusOK{Campo obrigatório: Tipo de benefício} --- Tipo de benefício presente.
+
+\medskip
+\statusOK{Marcações de edição não removidas (colchetes, placeholders, instruções, amarelo)}\\
+Nenhuma marcação de edição remanescente detectada.
+
+% -----------------------------------------------------------------------
+% Bloco 2 - Preliminares
+% -----------------------------------------------------------------------
+\subsection{Bloco 2 --- Preliminares (presença)}
+
+\begin{longtable}{p{8.5cm} p{4.5cm}}
+  \toprule
+  \textbf{Preliminar} & \textbf{Status} \\
+  \midrule
+  \endfirsthead
+  \toprule
+  \textbf{Preliminar} & \textbf{Status} \\
+  \midrule
+  \endhead
+  Juízo 100\% Digital                           & \textcolor{corOK}{\textbf{PRESENTE}} \\
+  Audiência de Conciliação                      & \textcolor{corOK}{\textbf{PRESENTE}} \\
+  Renúncia aos 60 Salários-Mínimos              & AUSENTE \\
+  Decadência                                    & AUSENTE \\
+  Prescrição                                    & AUSENTE \\
+  Coisa Julgada                                 & AUSENTE \\
+  Litispendência                                & AUSENTE \\
+  PPP não apresentado administrativamente       & AUSENTE \\
+  Períodos reconhecidos administrativamente     & AUSENTE \\
+  Petição inicial inepta                        & AUSENTE \\
+  \bottomrule
+\end{longtable}
+
+\statusINFO{Renúncia aos 60 SM obrigatória quando o juízo é o JEF}\\
+Não é JEF; a exigência de renúncia aos 60 SM não se aplica.
+
+% -----------------------------------------------------------------------
+% Bloco 6 - Redistribuição
+% -----------------------------------------------------------------------
+\subsection{Bloco 6 --- Redistribuição}
+
+\statusOK{Indício de categoria vigilante/vigia/guarda/policial} --- Sem indício detectado.
+
+\medskip
+\statusOK{Indício de profissional/ambiente de saúde + agente biológico} --- Sem indício detectado.
+
+\medskip
+\statusOK{Indício de professor com período posterior a 1981} --- Sem indício detectado.
+
+% -----------------------------------------------------------------------
+% Teses
+% -----------------------------------------------------------------------
+\subsection{Teses presentes (Blocos 3/4/5 --- catalogação)}
+
+\statusINFO{Catalogação das teses padronizadas presentes (CTN-/DIVESP- etc.)}\\
+Nenhuma tese padronizada (CTN-/DIVESP-) encontrada no texto.
+
+% -----------------------------------------------------------------------
+% Verificações adiadas
+% -----------------------------------------------------------------------
+\subsection{Verificações adiadas para a fase do LLM}
+
+\begin{itemize}
+  \item \texttt{[3.x]} Compatibilidade tese × agente × período (marcos temporais)
+  \item \texttt{[2.8]} Distinção entre as três situações de PPP não apresentado
+  \item \texttt{[2.45]} Cabimento de decadência/prescrição com base em datas e tipo de ação
+  \item \texttt{[1.4]} Cobertura dos períodos requeridos na petição inicial
+\end{itemize}
+
+
+
+\clearpage
+\lhead{Contestação 05}
+\section{Contestação 05 --- SEBASTIÃO RODRIGUES DA COSTA}
+% -----------------------------------------------------------------------
+% Cabeçalho
+% -----------------------------------------------------------------------
+\begin{center}
+  {\small Processo n.º 5006677-33.2024.4.03.6183 \quad NB: 46/333.222.111-4 \quad DER: 10/09/2023}
+\end{center}
+
+\vspace{0.5em}
+
+\noindent\colorbox{corFundoReprovado}{%
+  \begin{minipage}{\dimexpr\linewidth-2\fboxsep}
+    \centering
+    \vspace{0.3em}
+    {\large \textcolor{corERRO}{\textbf{VEREDITO: REPROVADO}}}\\
+    Erros: \textbf{1} \quad|\quad Pontos de verificação manual: \textbf{0}
+    \vspace{0.3em}
+  \end{minipage}%
+}
+
+\vspace{1em}
+
+
+% -----------------------------------------------------------------------
+% Bloco 1 - Estrutural
+% -----------------------------------------------------------------------
+\subsection{Bloco 1 --- Estrutural}
+
+\statusINFO{Tipo de endereçamento (JEF x Justiça Federal comum)}\\
+Endereçamento identificado: \textbf{JEF (Juizado Especial Federal)}.\\
+\textit{Evidência: ... SENHOR(A) DOUTOR(A) JUIZ(A) FEDERAL DA 10ª VARA FEDERAL DO JUIZADO ESPECIAL FEDERAL DA SUBSEÇÃO JUDICIÁRIA DE SÃO PAULO - SP Processo nº 500667...}
+
+\medskip
+\statusOK{Campo obrigatório: NB} --- NB presente.
+
+\medskip
+\statusOK{Campo obrigatório: DER} --- DER presente.
+
+\medskip
+\statusOK{Campo obrigatório: Número do processo} --- Número do processo presente.
+
+\medskip
+\statusOK{Campo obrigatório: Nome do autor} --- Nome do autor presente.\\
+\textit{Evidência: ... a federal já qualificada nos autos do processo em epígrafe, que lhe move SEBASTIÃO RODRIGUES DA COSTA, vem, respeitosamente, à presença de Vossa Excelência, por...}
+
+\medskip
+\statusOK{Campo obrigatório: Tipo de benefício} --- Tipo de benefício presente.
+
+\medskip
+\statusERRO{Marcações de edição não removidas (colchetes, placeholders, instruções, amarelo)}\\
+Há 2 marcação(ões) de edição não removida(s) na minuta --- devem ser eliminadas antes do envio.\\
+\textit{Evidência: instrução remanescente: "...r o ato de concessão de seu benefício. [VERIFICAR: deixar a preliminar de decadência some..." | instrução remanescente: "...concessão de seu benefício. [VERIFICAR: deixar a preliminar de decadência somente quando contabiliz..."}
+
+% -----------------------------------------------------------------------
+% Bloco 2 - Preliminares
+% -----------------------------------------------------------------------
+\subsection{Bloco 2 --- Preliminares (presença)}
+
+\begin{longtable}{p{8.5cm} p{4.5cm}}
+  \toprule
+  \textbf{Preliminar} & \textbf{Status} \\
+  \midrule
+  \endfirsthead
+  \toprule
+  \textbf{Preliminar} & \textbf{Status} \\
+  \midrule
+  \endhead
+  Juízo 100\% Digital                           & \textcolor{corOK}{\textbf{PRESENTE}} \\
+  Audiência de Conciliação                      & \textcolor{corOK}{\textbf{PRESENTE}} \\
+  Renúncia aos 60 Salários-Mínimos              & \textcolor{corOK}{\textbf{PRESENTE}} \\
+  Decadência                                    & \textcolor{corOK}{\textbf{PRESENTE}} \\
+  Prescrição                                    & AUSENTE \\
+  Coisa Julgada                                 & AUSENTE \\
+  Litispendência                                & AUSENTE \\
+  PPP não apresentado administrativamente       & AUSENTE \\
+  Períodos reconhecidos administrativamente     & AUSENTE \\
+  Petição inicial inepta                        & AUSENTE \\
+  \bottomrule
+\end{longtable}
+
+\statusOK{Renúncia aos 60 SM obrigatória quando o juízo é o JEF}\\
+Processo no JEF e preliminar de Renúncia aos 60 SM presente.
+
+% -----------------------------------------------------------------------
+% Bloco 6 - Redistribuição
+% -----------------------------------------------------------------------
+\subsection{Bloco 6 --- Redistribuição}
+
+\statusOK{Indício de categoria vigilante/vigia/guarda/policial} --- Sem indício detectado.
+
+\medskip
+\statusOK{Indício de profissional/ambiente de saúde + agente biológico} --- Sem indício detectado.
+
+\medskip
+\statusOK{Indício de professor com período posterior a 1981} --- Sem indício detectado.
+
+% -----------------------------------------------------------------------
+% Teses
+% -----------------------------------------------------------------------
+\subsection{Teses presentes (Blocos 3/4/5 --- catalogação)}
+
+\statusINFO{Catalogação das teses padronizadas presentes (CTN-/DIVESP- etc.)}\\
+Nenhuma tese padronizada (CTN-/DIVESP-) encontrada no texto.
+
+% -----------------------------------------------------------------------
+% Verificações adiadas
+% -----------------------------------------------------------------------
+\subsection{Verificações adiadas para a fase do LLM}
+
+\begin{itemize}
+  \item \texttt{[3.x]} Compatibilidade tese × agente × período (marcos temporais)
+  \item \texttt{[2.8]} Distinção entre as três situações de PPP não apresentado
+  \item \texttt{[2.45]} Cabimento de decadência/prescrição com base em datas e tipo de ação
+  \item \texttt{[1.4]} Cobertura dos períodos requeridos na petição inicial
+\end{itemize}
+
+
+
+\clearpage
+\lhead{Contestação 06}
+\section{Contestação 06 --- CARLOS ALBERTO FONSECA}
+% -----------------------------------------------------------------------
+% Cabeçalho
+% -----------------------------------------------------------------------
+\begin{center}
+  {\small Processo n.º 5007788-44.2025.4.03.6183 \quad NB: 46/444.333.222-1 \quad DER: 22/01/2025}
+\end{center}
+
+\vspace{0.5em}
+
+\noindent\colorbox{corFundoAprovado}{%
+  \begin{minipage}{\dimexpr\linewidth-2\fboxsep}
+    \centering
+    \vspace{0.3em}
+    {\large \textcolor{corOK}{\textbf{VEREDITO: APROVADO}}}\\
+    Erros: \textbf{0} \quad|\quad Pontos de verificação manual: \textbf{0}
+    \vspace{0.3em}
+  \end{minipage}%
+}
+
+\vspace{1em}
+
+
+% -----------------------------------------------------------------------
+% Bloco 1 - Estrutural
+% -----------------------------------------------------------------------
+\subsection{Bloco 1 --- Estrutural}
+
+\statusINFO{Tipo de endereçamento (JEF x Justiça Federal comum)}\\
+Endereçamento identificado: \textbf{JEF (Juizado Especial Federal)}.\\
+\textit{Evidência: ... SENHOR(A) DOUTOR(A) JUIZ(A) FEDERAL DA 6ª VARA FEDERAL DO JUIZADO ESPECIAL FEDERAL DA SUBSEÇÃO JUDICIÁRIA DE SÃO PAULO - SP Processo nº 500778...}
+
+\medskip
+\statusOK{Campo obrigatório: NB} --- NB presente.
+
+\medskip
+\statusOK{Campo obrigatório: DER} --- DER presente.
+
+\medskip
+\statusOK{Campo obrigatório: Número do processo} --- Número do processo presente.
+
+\medskip
+\statusOK{Campo obrigatório: Nome do autor} --- Nome do autor presente.\\
+\textit{Evidência: ... a federal já qualificada nos autos do processo em epígrafe, que lhe move CARLOS ALBERTO FONSECA, vem, respeitosamente, à presença de Vossa Excelência, por...}
+
+\medskip
+\statusOK{Campo obrigatório: Tipo de benefício} --- Tipo de benefício presente.
+
+\medskip
+\statusOK{Marcações de edição não removidas (colchetes, placeholders, instruções, amarelo)}\\
+Nenhuma marcação de edição remanescente detectada.
+
+% -----------------------------------------------------------------------
+% Bloco 2 - Preliminares
+% -----------------------------------------------------------------------
+\subsection{Bloco 2 --- Preliminares (presença)}
+
+\begin{longtable}{p{8.5cm} p{4.5cm}}
+  \toprule
+  \textbf{Preliminar} & \textbf{Status} \\
+  \midrule
+  \endfirsthead
+  \toprule
+  \textbf{Preliminar} & \textbf{Status} \\
+  \midrule
+  \endhead
+  Juízo 100\% Digital                           & \textcolor{corOK}{\textbf{PRESENTE}} \\
+  Audiência de Conciliação                      & \textcolor{corOK}{\textbf{PRESENTE}} \\
+  Renúncia aos 60 Salários-Mínimos              & \textcolor{corOK}{\textbf{PRESENTE}} \\
+  Decadência                                    & AUSENTE \\
+  Prescrição                                    & AUSENTE \\
+  Coisa Julgada                                 & AUSENTE \\
+  Litispendência                                & AUSENTE \\
+  PPP não apresentado administrativamente       & AUSENTE \\
+  Períodos reconhecidos administrativamente     & AUSENTE \\
+  Petição inicial inepta                        & AUSENTE \\
+  \bottomrule
+\end{longtable}
+
+\statusOK{Renúncia aos 60 SM obrigatória quando o juízo é o JEF}\\
+Processo no JEF e preliminar de Renúncia aos 60 SM presente.
+
+% -----------------------------------------------------------------------
+% Bloco 6 - Redistribuição
+% -----------------------------------------------------------------------
+\subsection{Bloco 6 --- Redistribuição}
+
+\statusOK{Indício de categoria vigilante/vigia/guarda/policial} --- Sem indício detectado.
+
+\medskip
+\statusOK{Indício de profissional/ambiente de saúde + agente biológico} --- Sem indício detectado.
+
+\medskip
+\statusOK{Indício de professor com período posterior a 1981} --- Sem indício detectado.
+
+% -----------------------------------------------------------------------
+% Teses
+% -----------------------------------------------------------------------
+\subsection{Teses presentes (Blocos 3/4/5 --- catalogação)}
+
+\statusINFO{Catalogação das teses padronizadas presentes (CTN-/DIVESP- etc.)}\\
+Nenhuma tese padronizada (CTN-/DIVESP-) encontrada no texto.
+
+% -----------------------------------------------------------------------
+% Verificações adiadas
+% -----------------------------------------------------------------------
+\subsection{Verificações adiadas para a fase do LLM}
+
+\begin{itemize}
+  \item \texttt{[3.x]} Compatibilidade tese × agente × período (marcos temporais)
+  \item \texttt{[2.8]} Distinção entre as três situações de PPP não apresentado
+  \item \texttt{[2.45]} Cabimento de decadência/prescrição com base em datas e tipo de ação
+  \item \texttt{[1.4]} Cobertura dos períodos requeridos na petição inicial
+\end{itemize}
+
+
+
+\clearpage
+\lhead{Contestação 07}
+\section{Contestação 07 --- JOSEFA MARIA DOS SANTOS}
+% -----------------------------------------------------------------------
+% Cabeçalho
+% -----------------------------------------------------------------------
+\begin{center}
+  {\small Processo n.º 5008899-55.2025.4.03.6301 \quad NB: 46/555.444.333-8 \quad DER: 30/06/2024}
+\end{center}
+
+\vspace{0.5em}
+
+\noindent\colorbox{corFundoAprovado}{%
+  \begin{minipage}{\dimexpr\linewidth-2\fboxsep}
+    \centering
+    \vspace{0.3em}
+    {\large \textcolor{corOK}{\textbf{VEREDITO: APROVADO}}}\\
+    Erros: \textbf{0} \quad|\quad Pontos de verificação manual: \textbf{0}
+    \vspace{0.3em}
+  \end{minipage}%
+}
+
+\vspace{1em}
+
+
+% -----------------------------------------------------------------------
+% Bloco 1 - Estrutural
+% -----------------------------------------------------------------------
+\subsection{Bloco 1 --- Estrutural}
+
+\statusINFO{Tipo de endereçamento (JEF x Justiça Federal comum)}\\
+Endereçamento identificado: \textbf{JEF (Juizado Especial Federal)}.\\
+\textit{Evidência: ... SENHOR(A) DOUTOR(A) JUIZ(A) FEDERAL DA 4ª VARA FEDERAL DO JUIZADO ESPECIAL FEDERAL DA SUBSEÇÃO JUDICIÁRIA DE SÃO PAULO - SP Processo nº 500889...}
+
+\medskip
+\statusOK{Campo obrigatório: NB} --- NB presente.
+
+\medskip
+\statusOK{Campo obrigatório: DER} --- DER presente.
+
+\medskip
+\statusOK{Campo obrigatório: Número do processo} --- Número do processo presente.
+
+\medskip
+\statusOK{Campo obrigatório: Nome do autor} --- Nome do autor presente.\\
+\textit{Evidência: ... a federal já qualificada nos autos do processo em epígrafe, que lhe move JOSEFA MARIA DOS SANTOS, vem, respeitosamente, à presença de Vossa Excelência, por...}
+
+\medskip
+\statusOK{Campo obrigatório: Tipo de benefício} --- Tipo de benefício presente.
+
+\medskip
+\statusOK{Marcações de edição não removidas (colchetes, placeholders, instruções, amarelo)}\\
+Nenhuma marcação de edição remanescente detectada.
+
+% -----------------------------------------------------------------------
+% Bloco 2 - Preliminares
+% -----------------------------------------------------------------------
+\subsection{Bloco 2 --- Preliminares (presença)}
+
+\begin{longtable}{p{8.5cm} p{4.5cm}}
+  \toprule
+  \textbf{Preliminar} & \textbf{Status} \\
+  \midrule
+  \endfirsthead
+  \toprule
+  \textbf{Preliminar} & \textbf{Status} \\
+  \midrule
+  \endhead
+  Juízo 100\% Digital                           & \textcolor{corOK}{\textbf{PRESENTE}} \\
+  Audiência de Conciliação                      & \textcolor{corOK}{\textbf{PRESENTE}} \\
+  Renúncia aos 60 Salários-Mínimos              & \textcolor{corOK}{\textbf{PRESENTE}} \\
+  Decadência                                    & AUSENTE \\
+  Prescrição                                    & AUSENTE \\
+  Coisa Julgada                                 & AUSENTE \\
+  Litispendência                                & AUSENTE \\
+  PPP não apresentado administrativamente       & AUSENTE \\
+  Períodos reconhecidos administrativamente     & AUSENTE \\
+  Petição inicial inepta                        & AUSENTE \\
+  \bottomrule
+\end{longtable}
+
+\statusOK{Renúncia aos 60 SM obrigatória quando o juízo é o JEF}\\
+Processo no JEF e preliminar de Renúncia aos 60 SM presente.
+
+% -----------------------------------------------------------------------
+% Bloco 6 - Redistribuição
+% -----------------------------------------------------------------------
+\subsection{Bloco 6 --- Redistribuição}
+
+\statusOK{Indício de categoria vigilante/vigia/guarda/policial} --- Sem indício detectado.
+
+\medskip
+\statusOK{Indício de profissional/ambiente de saúde + agente biológico} --- Sem indício detectado.
+
+\medskip
+\statusOK{Indício de professor com período posterior a 1981} --- Sem indício detectado.
+
+% -----------------------------------------------------------------------
+% Teses
+% -----------------------------------------------------------------------
+\subsection{Teses presentes (Blocos 3/4/5 --- catalogação)}
+
+\statusINFO{Catalogação das teses padronizadas presentes (CTN-/DIVESP- etc.)}\\
+Nenhuma tese padronizada (CTN-/DIVESP-) encontrada no texto.
+
+% -----------------------------------------------------------------------
+% Verificações adiadas
+% -----------------------------------------------------------------------
+\subsection{Verificações adiadas para a fase do LLM}
+
+\begin{itemize}
+  \item \texttt{[3.x]} Compatibilidade tese × agente × período (marcos temporais)
+  \item \texttt{[2.8]} Distinção entre as três situações de PPP não apresentado
+  \item \texttt{[2.45]} Cabimento de decadência/prescrição com base em datas e tipo de ação
+  \item \texttt{[1.4]} Cobertura dos períodos requeridos na petição inicial
+\end{itemize}
+
+
+
+\clearpage
+\lhead{Contestação 08}
+\section{Contestação 08 --- PAULO ROBERTO ALVES}
+% -----------------------------------------------------------------------
+% Cabeçalho
+% -----------------------------------------------------------------------
+\begin{center}
+  {\small Processo n.º 5009900-66.2025.4.03.6183 \quad NB: 46/666.555.444-5 \quad DER: 14/03/2024}
+\end{center}
+
+\vspace{0.5em}
+
+\noindent\colorbox{corFundoAprovado}{%
+  \begin{minipage}{\dimexpr\linewidth-2\fboxsep}
+    \centering
+    \vspace{0.3em}
+    {\large \textcolor{corOK}{\textbf{VEREDITO: APROVADO}}}\\
+    Erros: \textbf{0} \quad|\quad Pontos de verificação manual: \textbf{0}
+    \vspace{0.3em}
+  \end{minipage}%
+}
+
+\vspace{1em}
+
+
+% -----------------------------------------------------------------------
+% Bloco 1 - Estrutural
+% -----------------------------------------------------------------------
+\subsection{Bloco 1 --- Estrutural}
+
+\statusINFO{Tipo de endereçamento (JEF x Justiça Federal comum)}\\
+Endereçamento identificado: \textbf{JEF (Juizado Especial Federal)}.\\
+\textit{Evidência: ... SENHOR(A) DOUTOR(A) JUIZ(A) FEDERAL DA 7ª VARA FEDERAL DO JUIZADO ESPECIAL FEDERAL DA SUBSEÇÃO JUDICIÁRIA DE SÃO PAULO - SP Processo nº 500990...}
+
+\medskip
+\statusOK{Campo obrigatório: NB} --- NB presente.
+
+\medskip
+\statusOK{Campo obrigatório: DER} --- DER presente.
+
+\medskip
+\statusOK{Campo obrigatório: Número do processo} --- Número do processo presente.
+
+\medskip
+\statusOK{Campo obrigatório: Nome do autor} --- Nome do autor presente.\\
+\textit{Evidência: ... a federal já qualificada nos autos do processo em epígrafe, que lhe move PAULO ROBERTO ALVES, vem, respeitosamente, à presença de Vossa Excelência, por...}
+
+\medskip
+\statusOK{Campo obrigatório: Tipo de benefício} --- Tipo de benefício presente.
+
+\medskip
+\statusOK{Marcações de edição não removidas (colchetes, placeholders, instruções, amarelo)}\\
+Nenhuma marcação de edição remanescente detectada.
+
+% -----------------------------------------------------------------------
+% Bloco 2 - Preliminares
+% -----------------------------------------------------------------------
+\subsection{Bloco 2 --- Preliminares (presença)}
+
+\begin{longtable}{p{8.5cm} p{4.5cm}}
+  \toprule
+  \textbf{Preliminar} & \textbf{Status} \\
+  \midrule
+  \endfirsthead
+  \toprule
+  \textbf{Preliminar} & \textbf{Status} \\
+  \midrule
+  \endhead
+  Juízo 100\% Digital                           & \textcolor{corOK}{\textbf{PRESENTE}} \\
+  Audiência de Conciliação                      & \textcolor{corOK}{\textbf{PRESENTE}} \\
+  Renúncia aos 60 Salários-Mínimos              & \textcolor{corOK}{\textbf{PRESENTE}} \\
+  Decadência                                    & AUSENTE \\
+  Prescrição                                    & AUSENTE \\
+  Coisa Julgada                                 & AUSENTE \\
+  Litispendência                                & AUSENTE \\
+  PPP não apresentado administrativamente       & AUSENTE \\
+  Períodos reconhecidos administrativamente     & AUSENTE \\
+  Petição inicial inepta                        & AUSENTE \\
+  \bottomrule
+\end{longtable}
+
+\statusOK{Renúncia aos 60 SM obrigatória quando o juízo é o JEF}\\
+Processo no JEF e preliminar de Renúncia aos 60 SM presente.
+
+% -----------------------------------------------------------------------
+% Bloco 6 - Redistribuição
+% -----------------------------------------------------------------------
+\subsection{Bloco 6 --- Redistribuição}
+
+\statusINFO{Indício de categoria vigilante/vigia/guarda/policial}\\
+\textcolor{corVERIFICAR}{\textbf{Redistribuição sugerida --- flag VIGILANTE}} (termo(s): vigilante).
+\\
+\textit{Evidência: aposentadoria especial, alegando exercício da atividade de VIGILANTE, com uso de arma de fogo, no período de 02/05/2008 a 18/07/...}
+
+\medskip
+\statusOK{Indício de profissional/ambiente de saúde + agente biológico} --- Sem indício detectado.
+
+\medskip
+\statusOK{Indício de professor com período posterior a 1981} --- Sem indício detectado.
+
+% -----------------------------------------------------------------------
+% Teses
+% -----------------------------------------------------------------------
+\subsection{Teses presentes (Blocos 3/4/5 --- catalogação)}
+
+\statusINFO{Catalogação das teses padronizadas presentes (CTN-/DIVESP- etc.)}\\
+Nenhuma tese padronizada (CTN-/DIVESP-) encontrada no texto.
+
+% -----------------------------------------------------------------------
+% Verificações adiadas
+% -----------------------------------------------------------------------
+\subsection{Verificações adiadas para a fase do LLM}
+
+\begin{itemize}
+  \item \texttt{[3.x]} Compatibilidade tese × agente × período (marcos temporais)
+  \item \texttt{[2.8]} Distinção entre as três situações de PPP não apresentado
+  \item \texttt{[2.45]} Cabimento de decadência/prescrição com base em datas e tipo de ação
+  \item \texttt{[1.4]} Cobertura dos períodos requeridos na petição inicial
+\end{itemize}
+
+
+
+\clearpage
+\lhead{Contestação 09}
+\section{Contestação 09 --- ANA CLÁUDIA MENEZES}
+% -----------------------------------------------------------------------
+% Cabeçalho
+% -----------------------------------------------------------------------
+\begin{center}
+  {\small Processo n.º 5010011-77.2025.4.03.6301 \quad NB: 46/777.666.555-2 \quad DER: 05/02/2024}
+\end{center}
+
+\vspace{0.5em}
+
+\noindent\colorbox{corFundoAprovado}{%
+  \begin{minipage}{\dimexpr\linewidth-2\fboxsep}
+    \centering
+    \vspace{0.3em}
+    {\large \textcolor{corOK}{\textbf{VEREDITO: APROVADO}}}\\
+    Erros: \textbf{0} \quad|\quad Pontos de verificação manual: \textbf{0}
+    \vspace{0.3em}
+  \end{minipage}%
+}
+
+\vspace{1em}
+
+
+% -----------------------------------------------------------------------
+% Bloco 1 - Estrutural
+% -----------------------------------------------------------------------
+\subsection{Bloco 1 --- Estrutural}
+
+\statusINFO{Tipo de endereçamento (JEF x Justiça Federal comum)}\\
+Endereçamento identificado: \textbf{JEF (Juizado Especial Federal)}.\\
+\textit{Evidência: ... SENHOR(A) DOUTOR(A) JUIZ(A) FEDERAL DA 9ª VARA FEDERAL DO JUIZADO ESPECIAL FEDERAL DA SUBSEÇÃO JUDICIÁRIA DE SÃO PAULO - SP Processo nº 501001...}
+
+\medskip
+\statusOK{Campo obrigatório: NB} --- NB presente.
+
+\medskip
+\statusOK{Campo obrigatório: DER} --- DER presente.
+
+\medskip
+\statusOK{Campo obrigatório: Número do processo} --- Número do processo presente.
+
+\medskip
+\statusOK{Campo obrigatório: Nome do autor} --- Nome do autor presente.\\
+\textit{Evidência: ... a federal já qualificada nos autos do processo em epígrafe, que lhe move ANA CLÁUDIA MENEZES, vem, respeitosamente, à presença de Vossa Excelência, por...}
+
+\medskip
+\statusOK{Campo obrigatório: Tipo de benefício} --- Tipo de benefício presente.
+
+\medskip
+\statusOK{Marcações de edição não removidas (colchetes, placeholders, instruções, amarelo)}\\
+Nenhuma marcação de edição remanescente detectada.
+
+% -----------------------------------------------------------------------
+% Bloco 2 - Preliminares
+% -----------------------------------------------------------------------
+\subsection{Bloco 2 --- Preliminares (presença)}
+
+\begin{longtable}{p{8.5cm} p{4.5cm}}
+  \toprule
+  \textbf{Preliminar} & \textbf{Status} \\
+  \midrule
+  \endfirsthead
+  \toprule
+  \textbf{Preliminar} & \textbf{Status} \\
+  \midrule
+  \endhead
+  Juízo 100\% Digital                           & \textcolor{corOK}{\textbf{PRESENTE}} \\
+  Audiência de Conciliação                      & \textcolor{corOK}{\textbf{PRESENTE}} \\
+  Renúncia aos 60 Salários-Mínimos              & \textcolor{corOK}{\textbf{PRESENTE}} \\
+  Decadência                                    & AUSENTE \\
+  Prescrição                                    & AUSENTE \\
+  Coisa Julgada                                 & AUSENTE \\
+  Litispendência                                & AUSENTE \\
+  PPP não apresentado administrativamente       & AUSENTE \\
+  Períodos reconhecidos administrativamente     & AUSENTE \\
+  Petição inicial inepta                        & AUSENTE \\
+  \bottomrule
+\end{longtable}
+
+\statusOK{Renúncia aos 60 SM obrigatória quando o juízo é o JEF}\\
+Processo no JEF e preliminar de Renúncia aos 60 SM presente.
+
+% -----------------------------------------------------------------------
+% Bloco 6 - Redistribuição
+% -----------------------------------------------------------------------
+\subsection{Bloco 6 --- Redistribuição}
+
+\statusOK{Indício de categoria vigilante/vigia/guarda/policial} --- Sem indício detectado.
+
+\medskip
+\statusINFO{Indício de profissional/ambiente de saúde + agente biológico}\\
+\textcolor{corVERIFICAR}{\textbf{Redistribuição sugerida --- flag SAÚDE}} (indício(s): auxiliar de enfermagem, hospital, ambiente hospitalar + agente biológico).
+\\
+\textit{Evidência: cessão do benefício de aposentadoria especial, na função de AUXILIAR DE ENFERMAGEM em ambiente hospitalar, alegando exposição a agente biológi...}
+
+\medskip
+\statusOK{Indício de professor com período posterior a 1981} --- Sem indício detectado.
+
+% -----------------------------------------------------------------------
+% Teses
+% -----------------------------------------------------------------------
+\subsection{Teses presentes (Blocos 3/4/5 --- catalogação)}
+
+\statusINFO{Catalogação das teses padronizadas presentes (CTN-/DIVESP- etc.)}\\
+Nenhuma tese padronizada (CTN-/DIVESP-) encontrada no texto.
+
+% -----------------------------------------------------------------------
+% Verificações adiadas
+% -----------------------------------------------------------------------
+\subsection{Verificações adiadas para a fase do LLM}
+
+\begin{itemize}
+  \item \texttt{[3.x]} Compatibilidade tese × agente × período (marcos temporais)
+  \item \texttt{[2.8]} Distinção entre as três situações de PPP não apresentado
+  \item \texttt{[2.45]} Cabimento de decadência/prescrição com base em datas e tipo de ação
+  \item \texttt{[1.4]} Cobertura dos períodos requeridos na petição inicial
+\end{itemize}
+
+
+
+\clearpage
+\lhead{Contestação 10}
+\section{Contestação 10 --- ROBERTO CARLOS DINIZ}
+% -----------------------------------------------------------------------
+% Cabeçalho
+% -----------------------------------------------------------------------
+\begin{center}
+  {\small Processo n.º 5011122-88.2025.4.03.6183 \quad NB: 46/888.777.666-3 \quad DER: 20/11/2023}
+\end{center}
+
+\vspace{0.5em}
+
+\noindent\colorbox{corFundoReprovado}{%
+  \begin{minipage}{\dimexpr\linewidth-2\fboxsep}
+    \centering
+    \vspace{0.3em}
+    {\large \textcolor{corERRO}{\textbf{VEREDITO: REPROVADO}}}\\
+    Erros: \textbf{1} \quad|\quad Pontos de verificação manual: \textbf{0}
+    \vspace{0.3em}
+  \end{minipage}%
+}
+
+\vspace{1em}
+
+
+% -----------------------------------------------------------------------
+% Bloco 1 - Estrutural
+% -----------------------------------------------------------------------
+\subsection{Bloco 1 --- Estrutural}
+
+\statusINFO{Tipo de endereçamento (JEF x Justiça Federal comum)}\\
+Endereçamento identificado: \textbf{JEF (Juizado Especial Federal)}.\\
+\textit{Evidência: ... SENHOR(A) DOUTOR(A) JUIZ(A) FEDERAL DA 2ª VARA FEDERAL DO JUIZADO ESPECIAL FEDERAL DA SUBSEÇÃO JUDICIÁRIA DE SÃO PAULO - SP Processo nº 501112...}
+
+\medskip
+\statusOK{Campo obrigatório: NB} --- NB presente.
+
+\medskip
+\statusOK{Campo obrigatório: DER} --- DER presente.
+
+\medskip
+\statusOK{Campo obrigatório: Número do processo} --- Número do processo presente.
+
+\medskip
+\statusOK{Campo obrigatório: Nome do autor} --- Nome do autor presente.\\
+\textit{Evidência: ... a federal já qualificada nos autos do processo em epígrafe, que lhe move ROBERTO CARLOS DINIZ, vem, respeitosamente, à presença de Vossa Excelência, por...}
+
+\medskip
+\statusERRO{Campo obrigatório: Tipo de benefício}\\
+\textbf{Tipo de benefício ausente na minuta.}
+
+\medskip
+\statusOK{Marcações de edição não removidas (colchetes, placeholders, instruções, amarelo)}\\
+Nenhuma marcação de edição remanescente detectada.
+
+% -----------------------------------------------------------------------
+% Bloco 2 - Preliminares
+% -----------------------------------------------------------------------
+\subsection{Bloco 2 --- Preliminares (presença)}
+
+\begin{longtable}{p{8.5cm} p{4.5cm}}
+  \toprule
+  \textbf{Preliminar} & \textbf{Status} \\
+  \midrule
+  \endfirsthead
+  \toprule
+  \textbf{Preliminar} & \textbf{Status} \\
+  \midrule
+  \endhead
+  Juízo 100\% Digital                           & \textcolor{corOK}{\textbf{PRESENTE}} \\
+  Audiência de Conciliação                      & \textcolor{corOK}{\textbf{PRESENTE}} \\
+  Renúncia aos 60 Salários-Mínimos              & \textcolor{corOK}{\textbf{PRESENTE}} \\
+  Decadência                                    & AUSENTE \\
+  Prescrição                                    & AUSENTE \\
+  Coisa Julgada                                 & AUSENTE \\
+  Litispendência                                & AUSENTE \\
+  PPP não apresentado administrativamente       & AUSENTE \\
+  Períodos reconhecidos administrativamente     & AUSENTE \\
+  Petição inicial inepta                        & AUSENTE \\
+  \bottomrule
+\end{longtable}
+
+\statusOK{Renúncia aos 60 SM obrigatória quando o juízo é o JEF}\\
+Processo no JEF e preliminar de Renúncia aos 60 SM presente.
+
+% -----------------------------------------------------------------------
+% Bloco 6 - Redistribuição
+% -----------------------------------------------------------------------
+\subsection{Bloco 6 --- Redistribuição}
+
+\statusOK{Indício de categoria vigilante/vigia/guarda/policial} --- Sem indício detectado.
+
+\medskip
+\statusOK{Indício de profissional/ambiente de saúde + agente biológico} --- Sem indício detectado.
+
+\medskip
+\statusINFO{Indício de professor com período posterior a 1981}\\
+\textcolor{corVERIFICAR}{\textbf{Redistribuição sugerida --- flag PROFESSOR}} (professor com indício de período posterior a 1981).
+\\
+\textit{Evidência: arte autora o reconhecimento de tempo especial na função de PROFESSOR, em exercício de magistério, no período de 01/02/1985 a 31/...}
+
+% -----------------------------------------------------------------------
+% Teses
+% -----------------------------------------------------------------------
+\subsection{Teses presentes (Blocos 3/4/5 --- catalogação)}
+
+\statusINFO{Catalogação das teses padronizadas presentes (CTN-/DIVESP- etc.)}\\
+Nenhuma tese padronizada (CTN-/DIVESP-) encontrada no texto.
+
+% -----------------------------------------------------------------------
+% Verificações adiadas
+% -----------------------------------------------------------------------
+\subsection{Verificações adiadas para a fase do LLM}
+
+\begin{itemize}
+  \item \texttt{[3.x]} Compatibilidade tese × agente × período (marcos temporais)
+  \item \texttt{[2.8]} Distinção entre as três situações de PPP não apresentado
+  \item \texttt{[2.45]} Cabimento de decadência/prescrição com base em datas e tipo de ação
+  \item \texttt{[1.4]} Cobertura dos períodos requeridos na petição inicial
+\end{itemize}
+
+
+
+\clearpage
+\lhead{Contestação 11}
+\section{Contestação 11 --- FRANCISCO DE ASSIS MOURA}
+% -----------------------------------------------------------------------
+% Cabeçalho
+% -----------------------------------------------------------------------
+\begin{center}
+  {\small Processo n.º 5012233-99.2025.4.03.6301 \quad NB: 46/999.888.777-0 \quad DER: 08/01/2024}
+\end{center}
+
+\vspace{0.5em}
+
+\noindent\colorbox{corFundoAprovado}{%
+  \begin{minipage}{\dimexpr\linewidth-2\fboxsep}
+    \centering
+    \vspace{0.3em}
+    {\large \textcolor{corOK}{\textbf{VEREDITO: APROVADO}}}\\
+    Erros: \textbf{0} \quad|\quad Pontos de verificação manual: \textbf{0}
+    \vspace{0.3em}
+  \end{minipage}%
+}
+
+\vspace{1em}
+
+
+% -----------------------------------------------------------------------
+% Bloco 1 - Estrutural
+% -----------------------------------------------------------------------
+\subsection{Bloco 1 --- Estrutural}
+
+\statusINFO{Tipo de endereçamento (JEF x Justiça Federal comum)}\\
+Endereçamento identificado: \textbf{JEF (Juizado Especial Federal)}.\\
+\textit{Evidência: ... SENHOR(A) DOUTOR(A) JUIZ(A) FEDERAL DA 5ª VARA FEDERAL DO JUIZADO ESPECIAL FEDERAL DA SUBSEÇÃO JUDICIÁRIA DE SÃO PAULO - SP Processo nº 501223...}
+
+\medskip
+\statusOK{Campo obrigatório: NB} --- NB presente.
+
+\medskip
+\statusOK{Campo obrigatório: DER} --- DER presente.
+
+\medskip
+\statusOK{Campo obrigatório: Número do processo} --- Número do processo presente.
+
+\medskip
+\statusOK{Campo obrigatório: Nome do autor} --- Nome do autor presente.\\
+\textit{Evidência: ... a federal já qualificada nos autos do processo em epígrafe, que lhe move FRANCISCO DE ASSIS MOURA, vem, respeitosamente, à presença de Vossa Excelência, por...}
+
+\medskip
+\statusOK{Campo obrigatório: Tipo de benefício} --- Tipo de benefício presente.
+
+\medskip
+\statusOK{Marcações de edição não removidas (colchetes, placeholders, instruções, amarelo)}\\
+Nenhuma marcação de edição remanescente detectada.
+
+% -----------------------------------------------------------------------
+% Bloco 2 - Preliminares
+% -----------------------------------------------------------------------
+\subsection{Bloco 2 --- Preliminares (presença)}
+
+\begin{longtable}{p{8.5cm} p{4.5cm}}
+  \toprule
+  \textbf{Preliminar} & \textbf{Status} \\
+  \midrule
+  \endfirsthead
+  \toprule
+  \textbf{Preliminar} & \textbf{Status} \\
+  \midrule
+  \endhead
+  Juízo 100\% Digital                           & \textcolor{corOK}{\textbf{PRESENTE}} \\
+  Audiência de Conciliação                      & \textcolor{corOK}{\textbf{PRESENTE}} \\
+  Renúncia aos 60 Salários-Mínimos              & \textcolor{corOK}{\textbf{PRESENTE}} \\
+  Decadência                                    & AUSENTE \\
+  Prescrição                                    & AUSENTE \\
+  Coisa Julgada                                 & AUSENTE \\
+  Litispendência                                & AUSENTE \\
+  PPP não apresentado administrativamente       & AUSENTE \\
+  Períodos reconhecidos administrativamente     & AUSENTE \\
+  Petição inicial inepta                        & AUSENTE \\
+  \bottomrule
+\end{longtable}
+
+\statusOK{Renúncia aos 60 SM obrigatória quando o juízo é o JEF}\\
+Processo no JEF e preliminar de Renúncia aos 60 SM presente.
+
+% -----------------------------------------------------------------------
+% Bloco 6 - Redistribuição
+% -----------------------------------------------------------------------
+\subsection{Bloco 6 --- Redistribuição}
+
+\statusOK{Indício de categoria vigilante/vigia/guarda/policial} --- Sem indício detectado.
+
+\medskip
+\statusOK{Indício de profissional/ambiente de saúde + agente biológico} --- Sem indício detectado.
+
+\medskip
+\statusOK{Indício de professor com período posterior a 1981} --- Sem indício detectado.
+
+% -----------------------------------------------------------------------
+% Teses
+% -----------------------------------------------------------------------
+\subsection{Teses presentes (Blocos 3/4/5 --- catalogação)}
+
+\statusINFO{Catalogação das teses padronizadas presentes (CTN-/DIVESP- etc.)}\\
+Nenhuma tese padronizada (CTN-/DIVESP-) encontrada no texto.
+
+% -----------------------------------------------------------------------
+% Verificações adiadas
+% -----------------------------------------------------------------------
+\subsection{Verificações adiadas para a fase do LLM}
+
+\begin{itemize}
+  \item \texttt{[3.x]} Compatibilidade tese × agente × período (marcos temporais)
+  \item \texttt{[2.8]} Distinção entre as três situações de PPP não apresentado
+  \item \texttt{[2.45]} Cabimento de decadência/prescrição com base em datas e tipo de ação
+  \item \texttt{[1.4]} Cobertura dos períodos requeridos na petição inicial
+\end{itemize}
+
+
+
+\clearpage
+\lhead{Contestação 12}
+\section{Contestação 12 --- LUIZA HELENA BARROS}
+% -----------------------------------------------------------------------
+% Cabeçalho
+% -----------------------------------------------------------------------
+\begin{center}
+  {\small Processo n.º 5013344-10.2025.4.03.6183 \quad NB: — \quad DER: 15/05/2024}
+\end{center}
+
+\vspace{0.5em}
+
+\noindent\colorbox{corFundoReprovado}{%
+  \begin{minipage}{\dimexpr\linewidth-2\fboxsep}
+    \centering
+    \vspace{0.3em}
+    {\large \textcolor{corERRO}{\textbf{VEREDITO: REPROVADO}}}\\
+    Erros: \textbf{1} \quad|\quad Pontos de verificação manual: \textbf{0}
+    \vspace{0.3em}
+  \end{minipage}%
+}
+
+\vspace{1em}
+
+
+% -----------------------------------------------------------------------
+% Bloco 1 - Estrutural
+% -----------------------------------------------------------------------
+\subsection{Bloco 1 --- Estrutural}
+
+\statusINFO{Tipo de endereçamento (JEF x Justiça Federal comum)}\\
+Endereçamento identificado: \textbf{JEF (Juizado Especial Federal)}.\\
+\textit{Evidência: ... SENHOR(A) DOUTOR(A) JUIZ(A) FEDERAL DA 1ª VARA FEDERAL DO JUIZADO ESPECIAL FEDERAL DA SUBSEÇÃO JUDICIÁRIA DE SÃO PAULO - SP Processo nº 501334...}
+
+\medskip
+\statusERRO{Campo obrigatório: NB}\\
+\textbf{NB ausente na minuta.}
+
+\medskip
+\statusOK{Campo obrigatório: DER} --- DER presente.
+
+\medskip
+\statusOK{Campo obrigatório: Número do processo} --- Número do processo presente.
+
+\medskip
+\statusOK{Campo obrigatório: Nome do autor} --- Nome do autor presente.\\
+\textit{Evidência: ... a federal já qualificada nos autos do processo em epígrafe, que lhe move LUIZA HELENA BARROS, vem, respeitosamente, à presença de Vossa Excelência, por...}
+
+\medskip
+\statusOK{Campo obrigatório: Tipo de benefício} --- Tipo de benefício presente.
+
+\medskip
+\statusOK{Marcações de edição não removidas (colchetes, placeholders, instruções, amarelo)}\\
+Nenhuma marcação de edição remanescente detectada.
+
+% -----------------------------------------------------------------------
+% Bloco 2 - Preliminares
+% -----------------------------------------------------------------------
+\subsection{Bloco 2 --- Preliminares (presença)}
+
+\begin{longtable}{p{8.5cm} p{4.5cm}}
+  \toprule
+  \textbf{Preliminar} & \textbf{Status} \\
+  \midrule
+  \endfirsthead
+  \toprule
+  \textbf{Preliminar} & \textbf{Status} \\
+  \midrule
+  \endhead
+  Juízo 100\% Digital                           & \textcolor{corOK}{\textbf{PRESENTE}} \\
+  Audiência de Conciliação                      & \textcolor{corOK}{\textbf{PRESENTE}} \\
+  Renúncia aos 60 Salários-Mínimos              & \textcolor{corOK}{\textbf{PRESENTE}} \\
+  Decadência                                    & AUSENTE \\
+  Prescrição                                    & AUSENTE \\
+  Coisa Julgada                                 & AUSENTE \\
+  Litispendência                                & AUSENTE \\
+  PPP não apresentado administrativamente       & \textcolor{corOK}{\textbf{PRESENTE}} \\
+  Períodos reconhecidos administrativamente     & AUSENTE \\
+  Petição inicial inepta                        & AUSENTE \\
+  \bottomrule
+\end{longtable}
+
+\statusOK{Renúncia aos 60 SM obrigatória quando o juízo é o JEF}\\
+Processo no JEF e preliminar de Renúncia aos 60 SM presente.
+
+% -----------------------------------------------------------------------
+% Bloco 6 - Redistribuição
+% -----------------------------------------------------------------------
+\subsection{Bloco 6 --- Redistribuição}
+
+\statusOK{Indício de categoria vigilante/vigia/guarda/policial} --- Sem indício detectado.
+
+\medskip
+\statusOK{Indício de profissional/ambiente de saúde + agente biológico} --- Sem indício detectado.
+
+\medskip
+\statusOK{Indício de professor com período posterior a 1981} --- Sem indício detectado.
+
+% -----------------------------------------------------------------------
+% Teses
+% -----------------------------------------------------------------------
+\subsection{Teses presentes (Blocos 3/4/5 --- catalogação)}
+
+\statusINFO{Catalogação das teses padronizadas presentes (CTN-/DIVESP- etc.)}\\
+Nenhuma tese padronizada (CTN-/DIVESP-) encontrada no texto.
+
+% -----------------------------------------------------------------------
+% Verificações adiadas
+% -----------------------------------------------------------------------
+\subsection{Verificações adiadas para a fase do LLM}
+
+\begin{itemize}
+  \item \texttt{[3.x]} Compatibilidade tese × agente × período (marcos temporais)
+  \item \texttt{[2.8]} Distinção entre as três situações de PPP não apresentado
+  \item \texttt{[2.45]} Cabimento de decadência/prescrição com base em datas e tipo de ação
+  \item \texttt{[1.4]} Cobertura dos períodos requeridos na petição inicial
+\end{itemize}
+
+
+
+\clearpage
+\lhead{Contestação 13}
+\section{Contestação 13 --- MARCOS VINÍCIUS TEIXEIRA}
+% -----------------------------------------------------------------------
+% Cabeçalho
+% -----------------------------------------------------------------------
+\begin{center}
+  {\small Processo n.º 5014455-21.2025.4.03.6301 \quad NB: 46/101.202.303-6 \quad DER: 10/07/2024}
+\end{center}
+
+\vspace{0.5em}
+
+\noindent\colorbox{corFundoAprovado}{%
+  \begin{minipage}{\dimexpr\linewidth-2\fboxsep}
+    \centering
+    \vspace{0.3em}
+    {\large \textcolor{corOK}{\textbf{VEREDITO: APROVADO}}}\\
+    Erros: \textbf{0} \quad|\quad Pontos de verificação manual: \textbf{0}
+    \vspace{0.3em}
+  \end{minipage}%
+}
+
+\vspace{1em}
+
+
+% -----------------------------------------------------------------------
+% Bloco 1 - Estrutural
+% -----------------------------------------------------------------------
+\subsection{Bloco 1 --- Estrutural}
+
+\statusINFO{Tipo de endereçamento (JEF x Justiça Federal comum)}\\
+Endereçamento identificado: \textbf{JEF (Juizado Especial Federal)}.\\
+\textit{Evidência: ... SENHOR(A) DOUTOR(A) JUIZ(A) FEDERAL DA 8ª VARA FEDERAL DO JUIZADO ESPECIAL FEDERAL DA SUBSEÇÃO JUDICIÁRIA DE SÃO PAULO - SP Processo nº 501445...}
+
+\medskip
+\statusOK{Campo obrigatório: NB} --- NB presente.
+
+\medskip
+\statusOK{Campo obrigatório: DER} --- DER presente.
+
+\medskip
+\statusOK{Campo obrigatório: Número do processo} --- Número do processo presente.
+
+\medskip
+\statusOK{Campo obrigatório: Nome do autor} --- Nome do autor presente.\\
+\textit{Evidência: ... a federal já qualificada nos autos do processo em epígrafe, que lhe move MARCOS VINÍCIUS TEIXEIRA, vem, respeitosamente, à presença de Vossa Excelência, por...}
+
+\medskip
+\statusOK{Campo obrigatório: Tipo de benefício} --- Tipo de benefício presente.
+
+\medskip
+\statusOK{Marcações de edição não removidas (colchetes, placeholders, instruções, amarelo)}\\
+Nenhuma marcação de edição remanescente detectada.
+
+% -----------------------------------------------------------------------
+% Bloco 2 - Preliminares
+% -----------------------------------------------------------------------
+\subsection{Bloco 2 --- Preliminares (presença)}
+
+\begin{longtable}{p{8.5cm} p{4.5cm}}
+  \toprule
+  \textbf{Preliminar} & \textbf{Status} \\
+  \midrule
+  \endfirsthead
+  \toprule
+  \textbf{Preliminar} & \textbf{Status} \\
+  \midrule
+  \endhead
+  Juízo 100\% Digital                           & \textcolor{corOK}{\textbf{PRESENTE}} \\
+  Audiência de Conciliação                      & \textcolor{corOK}{\textbf{PRESENTE}} \\
+  Renúncia aos 60 Salários-Mínimos              & \textcolor{corOK}{\textbf{PRESENTE}} \\
+  Decadência                                    & AUSENTE \\
+  Prescrição                                    & AUSENTE \\
+  Coisa Julgada                                 & AUSENTE \\
+  Litispendência                                & AUSENTE \\
+  PPP não apresentado administrativamente       & AUSENTE \\
+  Períodos reconhecidos administrativamente     & AUSENTE \\
+  Petição inicial inepta                        & AUSENTE \\
+  \bottomrule
+\end{longtable}
+
+\statusOK{Renúncia aos 60 SM obrigatória quando o juízo é o JEF}\\
+Processo no JEF e preliminar de Renúncia aos 60 SM presente.
+
+% -----------------------------------------------------------------------
+% Bloco 6 - Redistribuição
+% -----------------------------------------------------------------------
+\subsection{Bloco 6 --- Redistribuição}
+
+\statusOK{Indício de categoria vigilante/vigia/guarda/policial} --- Sem indício detectado.
+
+\medskip
+\statusOK{Indício de profissional/ambiente de saúde + agente biológico} --- Sem indício detectado.
+
+\medskip
+\statusOK{Indício de professor com período posterior a 1981} --- Sem indício detectado.
+
+% -----------------------------------------------------------------------
+% Teses
+% -----------------------------------------------------------------------
+\subsection{Teses presentes (Blocos 3/4/5 --- catalogação)}
+
+\statusINFO{Catalogação das teses padronizadas presentes (CTN-/DIVESP- etc.)}\\
+Nenhuma tese padronizada (CTN-/DIVESP-) encontrada no texto.
+
+% -----------------------------------------------------------------------
+% Verificações adiadas
+% -----------------------------------------------------------------------
+\subsection{Verificações adiadas para a fase do LLM}
+
+\begin{itemize}
+  \item \texttt{[3.x]} Compatibilidade tese × agente × período (marcos temporais)
+  \item \texttt{[2.8]} Distinção entre as três situações de PPP não apresentado
+  \item \texttt{[2.45]} Cabimento de decadência/prescrição com base em datas e tipo de ação
+  \item \texttt{[1.4]} Cobertura dos períodos requeridos na petição inicial
+\end{itemize}
+
+
+
+\clearpage
+\lhead{Contestação 14}
+\section{Contestação 14 --- RAIMUNDO NONATO SILVA}
+% -----------------------------------------------------------------------
+% Cabeçalho
+% -----------------------------------------------------------------------
+\begin{center}
+  {\small Processo n.º 5015566-32.2025.4.03.6183 \quad NB: 46/121.232.343-9 \quad DER: 03/03/2024}
+\end{center}
+
+\vspace{0.5em}
+
+\noindent\colorbox{corFundoAprovado}{%
+  \begin{minipage}{\dimexpr\linewidth-2\fboxsep}
+    \centering
+    \vspace{0.3em}
+    {\large \textcolor{corOK}{\textbf{VEREDITO: APROVADO}}}\\
+    Erros: \textbf{0} \quad|\quad Pontos de verificação manual: \textbf{0}
+    \vspace{0.3em}
+  \end{minipage}%
+}
+
+\vspace{1em}
+
+
+% -----------------------------------------------------------------------
+% Bloco 1 - Estrutural
+% -----------------------------------------------------------------------
+\subsection{Bloco 1 --- Estrutural}
+
+\statusINFO{Tipo de endereçamento (JEF x Justiça Federal comum)}\\
+Endereçamento identificado: \textbf{JEF (Juizado Especial Federal)}.\\
+\textit{Evidência: ... SENHOR(A) DOUTOR(A) JUIZ(A) FEDERAL DA 3ª VARA FEDERAL DO JUIZADO ESPECIAL FEDERAL DA SUBSEÇÃO JUDICIÁRIA DE SÃO PAULO - SP Processo nº 501556...}
+
+\medskip
+\statusOK{Campo obrigatório: NB} --- NB presente.
+
+\medskip
+\statusOK{Campo obrigatório: DER} --- DER presente.
+
+\medskip
+\statusOK{Campo obrigatório: Número do processo} --- Número do processo presente.
+
+\medskip
+\statusOK{Campo obrigatório: Nome do autor} --- Nome do autor presente.\\
+\textit{Evidência: ... a federal já qualificada nos autos do processo em epígrafe, que lhe move RAIMUNDO NONATO SILVA, vem, respeitosamente, à presença de Vossa Excelência, por...}
+
+\medskip
+\statusOK{Campo obrigatório: Tipo de benefício} --- Tipo de benefício presente.
+
+\medskip
+\statusOK{Marcações de edição não removidas (colchetes, placeholders, instruções, amarelo)}\\
+Nenhuma marcação de edição remanescente detectada.
+
+% -----------------------------------------------------------------------
+% Bloco 2 - Preliminares
+% -----------------------------------------------------------------------
+\subsection{Bloco 2 --- Preliminares (presença)}
+
+\begin{longtable}{p{8.5cm} p{4.5cm}}
+  \toprule
+  \textbf{Preliminar} & \textbf{Status} \\
+  \midrule
+  \endfirsthead
+  \toprule
+  \textbf{Preliminar} & \textbf{Status} \\
+  \midrule
+  \endhead
+  Juízo 100\% Digital                           & \textcolor{corOK}{\textbf{PRESENTE}} \\
+  Audiência de Conciliação                      & \textcolor{corOK}{\textbf{PRESENTE}} \\
+  Renúncia aos 60 Salários-Mínimos              & \textcolor{corOK}{\textbf{PRESENTE}} \\
+  Decadência                                    & AUSENTE \\
+  Prescrição                                    & AUSENTE \\
+  Coisa Julgada                                 & AUSENTE \\
+  Litispendência                                & AUSENTE \\
+  PPP não apresentado administrativamente       & AUSENTE \\
+  Períodos reconhecidos administrativamente     & AUSENTE \\
+  Petição inicial inepta                        & AUSENTE \\
+  \bottomrule
+\end{longtable}
+
+\statusOK{Renúncia aos 60 SM obrigatória quando o juízo é o JEF}\\
+Processo no JEF e preliminar de Renúncia aos 60 SM presente.
+
+% -----------------------------------------------------------------------
+% Bloco 6 - Redistribuição
+% -----------------------------------------------------------------------
+\subsection{Bloco 6 --- Redistribuição}
+
+\statusOK{Indício de categoria vigilante/vigia/guarda/policial} --- Sem indício detectado.
+
+\medskip
+\statusOK{Indício de profissional/ambiente de saúde + agente biológico} --- Sem indício detectado.
+
+\medskip
+\statusOK{Indício de professor com período posterior a 1981} --- Sem indício detectado.
+
+% -----------------------------------------------------------------------
+% Teses
+% -----------------------------------------------------------------------
+\subsection{Teses presentes (Blocos 3/4/5 --- catalogação)}
+
+\statusINFO{Catalogação das teses padronizadas presentes (CTN-/DIVESP- etc.)}\\
+Nenhuma tese padronizada (CTN-/DIVESP-) encontrada no texto.
+
+% -----------------------------------------------------------------------
+% Verificações adiadas
+% -----------------------------------------------------------------------
+\subsection{Verificações adiadas para a fase do LLM}
+
+\begin{itemize}
+  \item \texttt{[3.x]} Compatibilidade tese × agente × período (marcos temporais)
+  \item \texttt{[2.8]} Distinção entre as três situações de PPP não apresentado
+  \item \texttt{[2.45]} Cabimento de decadência/prescrição com base em datas e tipo de ação
+  \item \texttt{[1.4]} Cobertura dos períodos requeridos na petição inicial
+\end{itemize}
+
+
+
+\clearpage
+\lhead{Contestação 15}
+\section{Contestação 15 --- TEREZA CRISTINA LOPES}
+% -----------------------------------------------------------------------
+% Cabeçalho
+% -----------------------------------------------------------------------
+\begin{center}
+  {\small Processo n.º 5016677-43.2025.4.03.6301 \quad NB: 46/131.242.353-4 \quad DER: 25/04/2024}
+\end{center}
+
+\vspace{0.5em}
+
+\noindent\colorbox{corFundoReprovado}{%
+  \begin{minipage}{\dimexpr\linewidth-2\fboxsep}
+    \centering
+    \vspace{0.3em}
+    {\large \textcolor{corERRO}{\textbf{VEREDITO: REPROVADO}}}\\
+    Erros: \textbf{1} \quad|\quad Pontos de verificação manual: \textbf{0}
+    \vspace{0.3em}
+  \end{minipage}%
+}
+
+\vspace{1em}
+
+
+% -----------------------------------------------------------------------
+% Bloco 1 - Estrutural
+% -----------------------------------------------------------------------
+\subsection{Bloco 1 --- Estrutural}
+
+\statusINFO{Tipo de endereçamento (JEF x Justiça Federal comum)}\\
+Endereçamento identificado: \textbf{JEF (Juizado Especial Federal)}.\\
+\textit{Evidência: ... SENHOR(A) DOUTOR(A) JUIZ(A) FEDERAL DA 6ª VARA FEDERAL DO JUIZADO ESPECIAL FEDERAL DA SUBSEÇÃO JUDICIÁRIA DE SÃO PAULO - SP Processo nº 501667...}
+
+\medskip
+\statusOK{Campo obrigatório: NB} --- NB presente.
+
+\medskip
+\statusOK{Campo obrigatório: DER} --- DER presente.
+
+\medskip
+\statusOK{Campo obrigatório: Número do processo} --- Número do processo presente.
+
+\medskip
+\statusOK{Campo obrigatório: Nome do autor} --- Nome do autor presente.\\
+\textit{Evidência: ... a federal já qualificada nos autos do processo em epígrafe, que lhe move TEREZA CRISTINA LOPES, vem, respeitosamente, à presença de Vossa Excelência, por...}
+
+\medskip
+\statusOK{Campo obrigatório: Tipo de benefício} --- Tipo de benefício presente.
+
+\medskip
+\statusOK{Marcações de edição não removidas (colchetes, placeholders, instruções, amarelo)}\\
+Nenhuma marcação de edição remanescente detectada.
+
+% -----------------------------------------------------------------------
+% Bloco 2 - Preliminares
+% -----------------------------------------------------------------------
+\subsection{Bloco 2 --- Preliminares (presença)}
+
+\begin{longtable}{p{8.5cm} p{4.5cm}}
+  \toprule
+  \textbf{Preliminar} & \textbf{Status} \\
+  \midrule
+  \endfirsthead
+  \toprule
+  \textbf{Preliminar} & \textbf{Status} \\
+  \midrule
+  \endhead
+  Juízo 100\% Digital                           & AUSENTE \\
+  Audiência de Conciliação                      & \textcolor{corOK}{\textbf{PRESENTE}} \\
+  Renúncia aos 60 Salários-Mínimos              & AUSENTE \\
+  Decadência                                    & AUSENTE \\
+  Prescrição                                    & AUSENTE \\
+  Coisa Julgada                                 & AUSENTE \\
+  Litispendência                                & AUSENTE \\
+  PPP não apresentado administrativamente       & AUSENTE \\
+  Períodos reconhecidos administrativamente     & AUSENTE \\
+  Petição inicial inepta                        & AUSENTE \\
+  \bottomrule
+\end{longtable}
+
+\statusERRO{Renúncia aos 60 SM obrigatória quando o juízo é o JEF}\\
+Processo no JEF, mas a preliminar de Renúncia aos 60 salários-mínimos está AUSENTE (art. 3º, §2º, Lei 10.259/2001).
+
+% -----------------------------------------------------------------------
+% Bloco 6 - Redistribuição
+% -----------------------------------------------------------------------
+\subsection{Bloco 6 --- Redistribuição}
+
+\statusOK{Indício de categoria vigilante/vigia/guarda/policial} --- Sem indício detectado.
+
+\medskip
+\statusOK{Indício de profissional/ambiente de saúde + agente biológico} --- Sem indício detectado.
+
+\medskip
+\statusOK{Indício de professor com período posterior a 1981} --- Sem indício detectado.
+
+% -----------------------------------------------------------------------
+% Teses
+% -----------------------------------------------------------------------
+\subsection{Teses presentes (Blocos 3/4/5 --- catalogação)}
+
+\statusINFO{Catalogação das teses padronizadas presentes (CTN-/DIVESP- etc.)}\\
+Nenhuma tese padronizada (CTN-/DIVESP-) encontrada no texto.
+
+% -----------------------------------------------------------------------
+% Verificações adiadas
+% -----------------------------------------------------------------------
+\subsection{Verificações adiadas para a fase do LLM}
+
+\begin{itemize}
+  \item \texttt{[3.x]} Compatibilidade tese × agente × período (marcos temporais)
+  \item \texttt{[2.8]} Distinção entre as três situações de PPP não apresentado
+  \item \texttt{[2.45]} Cabimento de decadência/prescrição com base em datas e tipo de ação
+  \item \texttt{[1.4]} Cobertura dos períodos requeridos na petição inicial
+\end{itemize}
+
+
+
+\clearpage
+\lhead{Contestação 16}
+\section{Contestação 16 --- EDSON LUÍS CAVALCANTE}
+% -----------------------------------------------------------------------
+% Cabeçalho
+% -----------------------------------------------------------------------
+\begin{center}
+  {\small Processo n.º 5017788-54.2025.4.03.6183 \quad NB: 46/141.252.363-1 \quad DER: 30/09/2023}
+\end{center}
+
+\vspace{0.5em}
+
+\noindent\colorbox{corFundoAprovado}{%
+  \begin{minipage}{\dimexpr\linewidth-2\fboxsep}
+    \centering
+    \vspace{0.3em}
+    {\large \textcolor{corOK}{\textbf{VEREDITO: APROVADO}}}\\
+    Erros: \textbf{0} \quad|\quad Pontos de verificação manual: \textbf{0}
+    \vspace{0.3em}
+  \end{minipage}%
+}
+
+\vspace{1em}
+
+
+% -----------------------------------------------------------------------
+% Bloco 1 - Estrutural
+% -----------------------------------------------------------------------
+\subsection{Bloco 1 --- Estrutural}
+
+\statusINFO{Tipo de endereçamento (JEF x Justiça Federal comum)}\\
+Endereçamento identificado: \textbf{JEF (Juizado Especial Federal)}.\\
+\textit{Evidência: ... SENHOR(A) DOUTOR(A) JUIZ(A) FEDERAL DA 10ª VARA FEDERAL DO JUIZADO ESPECIAL FEDERAL DA SUBSEÇÃO JUDICIÁRIA DE SÃO PAULO - SP Processo nº 501778...}
+
+\medskip
+\statusOK{Campo obrigatório: NB} --- NB presente.
+
+\medskip
+\statusOK{Campo obrigatório: DER} --- DER presente.
+
+\medskip
+\statusOK{Campo obrigatório: Número do processo} --- Número do processo presente.
+
+\medskip
+\statusOK{Campo obrigatório: Nome do autor} --- Nome do autor presente.\\
+\textit{Evidência: ... a federal já qualificada nos autos do processo em epígrafe, que lhe move EDSON LUÍS CAVALCANTE, vem, respeitosamente, à presença de Vossa Excelência, por...}
+
+\medskip
+\statusOK{Campo obrigatório: Tipo de benefício} --- Tipo de benefício presente.
+
+\medskip
+\statusOK{Marcações de edição não removidas (colchetes, placeholders, instruções, amarelo)}\\
+Nenhuma marcação de edição remanescente detectada.
+
+% -----------------------------------------------------------------------
+% Bloco 2 - Preliminares
+% -----------------------------------------------------------------------
+\subsection{Bloco 2 --- Preliminares (presença)}
+
+\begin{longtable}{p{8.5cm} p{4.5cm}}
+  \toprule
+  \textbf{Preliminar} & \textbf{Status} \\
+  \midrule
+  \endfirsthead
+  \toprule
+  \textbf{Preliminar} & \textbf{Status} \\
+  \midrule
+  \endhead
+  Juízo 100\% Digital                           & \textcolor{corOK}{\textbf{PRESENTE}} \\
+  Audiência de Conciliação                      & \textcolor{corOK}{\textbf{PRESENTE}} \\
+  Renúncia aos 60 Salários-Mínimos              & \textcolor{corOK}{\textbf{PRESENTE}} \\
+  Decadência                                    & AUSENTE \\
+  Prescrição                                    & AUSENTE \\
+  Coisa Julgada                                 & AUSENTE \\
+  Litispendência                                & AUSENTE \\
+  PPP não apresentado administrativamente       & AUSENTE \\
+  Períodos reconhecidos administrativamente     & AUSENTE \\
+  Petição inicial inepta                        & AUSENTE \\
+  \bottomrule
+\end{longtable}
+
+\statusOK{Renúncia aos 60 SM obrigatória quando o juízo é o JEF}\\
+Processo no JEF e preliminar de Renúncia aos 60 SM presente.
+
+% -----------------------------------------------------------------------
+% Bloco 6 - Redistribuição
+% -----------------------------------------------------------------------
+\subsection{Bloco 6 --- Redistribuição}
+
+\statusOK{Indício de categoria vigilante/vigia/guarda/policial} --- Sem indício detectado.
+
+\medskip
+\statusOK{Indício de profissional/ambiente de saúde + agente biológico} --- Sem indício detectado.
+
+\medskip
+\statusOK{Indício de professor com período posterior a 1981} --- Sem indício detectado.
+
+% -----------------------------------------------------------------------
+% Teses
+% -----------------------------------------------------------------------
+\subsection{Teses presentes (Blocos 3/4/5 --- catalogação)}
+
+\statusINFO{Catalogação das teses padronizadas presentes (CTN-/DIVESP- etc.)}\\
+Nenhuma tese padronizada (CTN-/DIVESP-) encontrada no texto.
+
+% -----------------------------------------------------------------------
+% Verificações adiadas
+% -----------------------------------------------------------------------
+\subsection{Verificações adiadas para a fase do LLM}
+
+\begin{itemize}
+  \item \texttt{[3.x]} Compatibilidade tese × agente × período (marcos temporais)
+  \item \texttt{[2.8]} Distinção entre as três situações de PPP não apresentado
+  \item \texttt{[2.45]} Cabimento de decadência/prescrição com base em datas e tipo de ação
+  \item \texttt{[1.4]} Cobertura dos períodos requeridos na petição inicial
+\end{itemize}
+
+
+
+\clearpage
+\lhead{Gabarito e divergências}
+\section{Gabarito de referência e análise das divergências}
+
+Esta seção confronta o veredito emitido pela ferramenta (\textbf{Fase~1 ---
+camada determinística, sem LLM}) com o \textbf{gabarito} de referência das 14
+contestações e explica, caso a caso, \emph{por que} a ferramenta diverge.
+
+\medskip
+\noindent\textbf{Ponto central.} A Fase~1 só executa verificações de
+\emph{presença/ausência} e de \emph{padrão textual}. Ela \textbf{não} avalia
+compatibilidade entre tese, agente nocivo e período (marcos temporais), nem
+coteja a peça com os pedidos da petição inicial ou com o formulário de
+contexto/PA --- essas checagens estão declaradas, em todos os relatórios, como
+\textbf{``Verificações adiadas para a fase do LLM''} (\texttt{[3.x]},
+\texttt{[2.8]}, \texttt{[2.45]}, \texttt{[1.4]}). Portanto, as divergências
+abaixo \textbf{não são falhas da camada determinística}: são exatamente os casos
+que ela, por projeto, deixa para a camada de raciocínio. Vale registrar que
+\textbf{nenhum} \status{ERRO} emitido é indevido --- toda reprovação da
+ferramenta (05, 10, 12, 15) coincide com o gabarito (precisão de 100\% nos erros
+apontados).
+
+\subsection*{Comparativo: ferramenta (Fase 1) $\times$ gabarito}
+
+\begin{longtable}{c c c c p{7.3cm}}
+  \toprule
+  \textbf{Nº} & \textbf{Fase 1} & \textbf{Gabarito} & \textbf{Converge?} & \textbf{Observação / motivo da divergência} \\
+  \midrule
+  \endfirsthead
+  \toprule
+  \textbf{Nº} & \textbf{Fase 1} & \textbf{Gabarito} & \textbf{Converge?} & \textbf{Observação / motivo da divergência} \\
+  \midrule
+  \endhead
+  03 & \textcolor{corOK}{APROVADO}  & APROVAR  & \textcolor{corOK}{Sim} & --- \\
+  04 & \textcolor{corOK}{APROVADO}  & APROVAR  & \textcolor{corOK}{Sim} & --- \\
+  05 & \textcolor{corERRO}{REPROVADO} & REPROVAR & \textcolor{corOK}{Sim} & Anotação de edição não removida (detecção determinística). \\
+  06 & \textcolor{corOK}{APROVADO}  & REPROVAR & \textcolor{corERRO}{\textbf{Não}} & Limiar de ruído (90 vs \textbf{85 dB(A) NEN}), metodologia (NR-15 vs \textbf{NEN/NHO-01}) e vedação pós-13/11/2019 ausente --- exigem análise agente$\times$período (\texttt{[3.x]}, \texttt{[1.4]}). \\
+  07 & \textcolor{corOK}{APROVADO}  & APROVAR  & \textcolor{corOK}{Sim} & --- \\
+  08 & \textcolor{corOK}{APROVADO}  & REPROVAR & \textcolor{corVERIFICAR}{\textbf{Parcial}} & \textbf{VIGILANTE} sinalizado (flag de redistribuição), mas a regra do Bloco~6 é \emph{não-bloqueante} por projeto. \\
+  09 & \textcolor{corOK}{APROVADO}  & REPROVAR & \textcolor{corVERIFICAR}{\textbf{Parcial}} & \textbf{SAÚDE}/agente biológico sinalizado (flag), também não-bloqueante por projeto. \\
+  10 & \textcolor{corERRO}{REPROVADO} & REPROVAR & \textcolor{corOK}{Sim*} & Reprovada por \textbf{Tipo de benefício ausente} (determinístico); \textbf{PROFESSOR} pós-1981 também foi sinalizado. \\
+  11 & \textcolor{corOK}{APROVADO}  & REPROVAR & \textcolor{corERRO}{\textbf{Não}} & Indeferimento forçado (tempo especial = Não + procuração \emph{ad judicia}) --- depende do PA/contexto, fora do texto da minuta. \\
+  12 & \textcolor{corERRO}{REPROVADO} & REPROVAR & \textcolor{corOK}{Sim*} & Reprovada por \textbf{NB ausente} (determinístico); ``sem pedido de tempo especial'' é da camada LLM. \\
+  13 & \textcolor{corOK}{APROVADO}  & REPROVAR & \textcolor{corERRO}{\textbf{Não}} & Impugna período não requerido e omite período requerido --- exige cotejo com a inicial (\texttt{[1.4]}). \\
+  14 & \textcolor{corOK}{APROVADO}  & REPROVAR & \textcolor{corERRO}{\textbf{Não}} & Vício CREA/CRM obsoleto + limiar de calor (24,7 vs \textbf{25 ºC}) --- exigem base de teses e marcos temporais (\texttt{[3.x]}). \\
+  15 & \textcolor{corERRO}{REPROVADO} & REPROVAR & \textcolor{corOK}{Sim} & Faltam \textbf{Juízo 100\% Digital} e \textbf{Renúncia 60SM} no JEF (determinístico). \\
+  16 & \textcolor{corOK}{APROVADO}  & APROVAR  & \textcolor{corOK}{Sim} & --- \\
+  \bottomrule
+\end{longtable}
+
+\noindent\footnotesize{* ``Sim*'': o veredito coincide com o gabarito, porém a
+reprovação da ferramenta decorre de um erro \emph{estrutural} detectável
+(NB/benefício), enquanto o motivo apontado no gabarito depende, em parte, da
+camada LLM.}\normalsize
+
+\subsection*{Por que a Fase 1 não reprova esses casos (por grupo)}
+
+\begin{itemize}[leftmargin=1.4em]
+  \item \textbf{Grupo A --- compatibilidade tese $\times$ agente $\times$ período
+        (\texttt{[3.x]}, \texttt{[1.4]}): casos 06 e 14.} Detectar que ``90 dB(A)''
+        está errado depois de 19/11/2003 (correto: 85 dB(A) NEN), que a
+        metodologia deveria ser NEN/NHO-01, que o limiar de calor muda de 25 ºC
+        para 24,7 ºC após a Portaria SEPRT 1.359/2019, ou que o vício CREA/CRM
+        está obsoleto, exige conhecer marcos temporais e uma base de teses
+        válidas. A camada determinística apenas cataloga teses; não julga
+        adequação.
+  \item \textbf{Grupo B --- cotejo com a petição inicial (\texttt{[1.4]}): caso 13
+        (e a vedação ausente do 06).} Saber que a peça impugnou um período que o
+        autor não pediu --- ou omitiu um que ele pediu --- requer comparar a
+        contestação com os períodos da inicial, o que a Fase~1 não faz.
+  \item \textbf{Grupo C --- contexto/PA fora do texto da minuta: caso 11.} O
+        gatilho de \emph{indeferimento forçado} (``possui tempo especial? Não'' +
+        procuração \emph{ad judicia} + ausência de análise técnica) vem do
+        formulário do processo administrativo, não de um padrão textual da
+        minuta.
+  \item \textbf{Grupo D --- redistribuição sinalizada, mas não-bloqueante: casos
+        08 e 09 (e reforço em 10).} O Bloco~6 identifica corretamente os perfis
+        VIGILANTE, SAÚDE e PROFESSOR e emite a \emph{flag} de redistribuição,
+        porém --- por decisão de projeto --- essa sinalização é um alerta
+        (\status{INFO}/\status{VERIFICAR}), nunca um \status{ERRO}. Logo, o
+        veredito permanece \textsc{aprovado} ainda que o caso deva ser
+        redistribuído.
+\end{itemize}
+
+\subsection*{Síntese}
+
+Das 14 contestações, o veredito da Fase~1 \textbf{coincide com o gabarito em 8}
+(03, 04, 05, 07, 10, 12, 15, 16); em \textbf{2} a ferramenta \emph{sinaliza} o
+problema mas não o converte em reprovação por design (08, 09); e em \textbf{4} a
+detecção foi legitimamente adiada para a camada de LLM (06, 11, 13, 14).
+Nenhuma reprovação foi indevida. As divergências, portanto, medem exatamente a
+fronteira entre a camada determinística já entregue e a camada de raciocínio
+ainda pendente.
+
+\end{document}

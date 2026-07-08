@@ -1,0 +1,183 @@
+{
+  "veredito": "APROVADO",
+  "total_erros": 0,
+  "total_verificar": 0,
+  "verificacoes": [
+    {
+      "id": "1.1-enderecamento",
+      "bloco": "Bloco 1 - Estrutural",
+      "descricao": "Tipo de endereçamento (JEF x Justiça Federal comum)",
+      "status": "INFO",
+      "mensagem": "Endereçamento identificado: JEF (Juizado Especial Federal).",
+      "evidencia": "...) SENHOR(A) DOUTOR(A) JUIZ(A) FEDERAL DA 7ª VARA FEDERAL DO JUIZADO ESPECIAL FEDERAL DA SUBSEÇÃO JUDICIÁRIA DE SÃO PAULO - SP Processo nº 500990..."
+    },
+    {
+      "id": "1.2-campos-obrigatorios:nb",
+      "bloco": "Bloco 1 - Estrutural",
+      "descricao": "Campo obrigatório: NB",
+      "status": "OK",
+      "mensagem": "NB presente.",
+      "evidencia": "...esso nº 5009900-66.2025.4.03.6183 NUP: 01122.990011/2025-88 NB: 46/666.555.444-5 DER: 14/03/2024 O INSTITUTO NACIONAL DO SE..."
+    },
+    {
+      "id": "1.2-campos-obrigatorios:der",
+      "bloco": "Bloco 1 - Estrutural",
+      "descricao": "Campo obrigatório: DER",
+      "status": "OK",
+      "mensagem": "DER presente.",
+      "evidencia": "...25.4.03.6183 NUP: 01122.990011/2025-88 NB: 46/666.555.444-5 DER: 14/03/2024 O INSTITUTO NACIONAL DO SEGURO SOCIAL - INSS, au..."
+    },
+    {
+      "id": "1.2-campos-obrigatorios:numero-do-processo",
+      "bloco": "Bloco 1 - Estrutural",
+      "descricao": "Campo obrigatório: Número do processo",
+      "status": "OK",
+      "mensagem": "Número do processo presente.",
+      "evidencia": "...EDERAL DA SUBSEÇÃO JUDICIÁRIA DE SÃO PAULO - SP Processo nº 5009900-66.2025.4.03.6183 NUP: 01122.990011/2025-88 NB: 46/666.555.444-5 DER: 14/03/2..."
+    },
+    {
+      "id": "1.2-campos-obrigatorios:nome-do-autor",
+      "bloco": "Bloco 1 - Estrutural",
+      "descricao": "Campo obrigatório: Nome do autor",
+      "status": "OK",
+      "mensagem": "Nome do autor presente.",
+      "evidencia": "...a federal já qualificada nos autos do processo em epígrafe, que lhe move PAULO ROBERTO ALVES, vem, respeitosamente, à presença de Vossa Excelência, por..."
+    },
+    {
+      "id": "1.2-campos-obrigatorios:tipo-de-beneficio",
+      "bloco": "Bloco 1 - Estrutural",
+      "descricao": "Campo obrigatório: Tipo de benefício",
+      "status": "OK",
+      "mensagem": "Tipo de benefício presente.",
+      "evidencia": "...A DEMANDA Trata-se de ação em que pleiteia a parte autora a concessão do benefício de aposentadoria especial, alegando exercício..."
+    },
+    {
+      "id": "1.3-marcacoes-edicao",
+      "bloco": "Bloco 1 - Estrutural",
+      "descricao": "Marcações de edição não removidas (colchetes, placeholders, instruções, amarelo)",
+      "status": "OK",
+      "mensagem": "Nenhuma marcação de edição remanescente detectada.",
+      "evidencia": null
+    },
+    {
+      "id": "2.presenca:juizo-digital",
+      "bloco": "Bloco 2 - Preliminares (presença)",
+      "descricao": "Preliminar: Juízo 100% Digital",
+      "status": "INFO",
+      "mensagem": "PRESENTE.",
+      "evidencia": null
+    },
+    {
+      "id": "2.presenca:conciliacao",
+      "bloco": "Bloco 2 - Preliminares (presença)",
+      "descricao": "Preliminar: Audiência de Conciliação",
+      "status": "INFO",
+      "mensagem": "PRESENTE.",
+      "evidencia": null
+    },
+    {
+      "id": "2.presenca:renuncia-60sm",
+      "bloco": "Bloco 2 - Preliminares (presença)",
+      "descricao": "Preliminar: Renúncia aos 60 Salários-Mínimos",
+      "status": "INFO",
+      "mensagem": "PRESENTE.",
+      "evidencia": null
+    },
+    {
+      "id": "2.presenca:decadencia",
+      "bloco": "Bloco 2 - Preliminares (presença)",
+      "descricao": "Preliminar: Decadência",
+      "status": "INFO",
+      "mensagem": "AUSENTE.",
+      "evidencia": null
+    },
+    {
+      "id": "2.presenca:prescricao",
+      "bloco": "Bloco 2 - Preliminares (presença)",
+      "descricao": "Preliminar: Prescrição",
+      "status": "INFO",
+      "mensagem": "AUSENTE.",
+      "evidencia": null
+    },
+    {
+      "id": "2.presenca:coisa-julgada",
+      "bloco": "Bloco 2 - Preliminares (presença)",
+      "descricao": "Preliminar: Coisa Julgada",
+      "status": "INFO",
+      "mensagem": "AUSENTE.",
+      "evidencia": null
+    },
+    {
+      "id": "2.presenca:litispendencia",
+      "bloco": "Bloco 2 - Preliminares (presença)",
+      "descricao": "Preliminar: Litispendência",
+      "status": "INFO",
+      "mensagem": "AUSENTE.",
+      "evidencia": null
+    },
+    {
+      "id": "2.presenca:ppp-nao-apresentado",
+      "bloco": "Bloco 2 - Preliminares (presença)",
+      "descricao": "Preliminar: PPP não apresentado administrativamente",
+      "status": "INFO",
+      "mensagem": "AUSENTE.",
+      "evidencia": null
+    },
+    {
+      "id": "2.presenca:periodos-reconhecidos",
+      "bloco": "Bloco 2 - Preliminares (presença)",
+      "descricao": "Preliminar: Períodos reconhecidos administrativamente",
+      "status": "INFO",
+      "mensagem": "AUSENTE.",
+      "evidencia": null
+    },
+    {
+      "id": "2.presenca:inicial-inepta",
+      "bloco": "Bloco 2 - Preliminares (presença)",
+      "descricao": "Preliminar: Petição inicial inepta",
+      "status": "INFO",
+      "mensagem": "AUSENTE.",
+      "evidencia": null
+    },
+    {
+      "id": "2.3-renuncia-jef",
+      "bloco": "Bloco 2 - Preliminares (presença)",
+      "descricao": "Renúncia aos 60 SM obrigatória quando o juízo é o JEF",
+      "status": "OK",
+      "mensagem": "Processo no JEF e preliminar de Renúncia aos 60 SM presente.",
+      "evidencia": null
+    },
+    {
+      "id": "6.1-vigilante",
+      "bloco": "Bloco 6 - Redistribuição",
+      "descricao": "Indício de categoria vigilante/vigia/guarda/policial",
+      "status": "INFO",
+      "mensagem": "Redistribuição sugerida — flag VIGILANTE (termo(s): vigilante).",
+      "evidencia": "...aposentadoria especial, alegando exercício da atividade de VIGILANTE, com uso de arma de fogo, no período de 02/05/2008 a 18/07/..."
+    },
+    {
+      "id": "6.2-saude",
+      "bloco": "Bloco 6 - Redistribuição",
+      "descricao": "Indício de profissional/ambiente de saúde + agente biológico",
+      "status": "OK",
+      "mensagem": "Sem indício combinado de profissional de saúde e agente biológico.",
+      "evidencia": null
+    },
+    {
+      "id": "6.3-professor",
+      "bloco": "Bloco 6 - Redistribuição",
+      "descricao": "Indício de professor com período posterior a 1981",
+      "status": "OK",
+      "mensagem": "Sem indício de professor em período posterior a 1981.",
+      "evidencia": null
+    },
+    {
+      "id": "345-catalogo-teses",
+      "bloco": "Teses presentes (Blocos 3/4/5 - catalogação)",
+      "descricao": "Catalogação das teses padronizadas presentes (CTN-/DIVESP- etc.)",
+      "status": "INFO",
+      "mensagem": "Nenhuma tese padronizada (CTN-/DIVESP-) encontrada no texto. A minuta de teste usa fundamentos em prosa, sem códigos de tese.",
+      "evidencia": null
+    }
+  ]
+}

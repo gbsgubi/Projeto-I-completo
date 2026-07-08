@@ -1,0 +1,12 @@
+# Fase 2 — backend do app de demonstração
+fastapi>=0.110
+uvicorn>=0.29
+python-multipart>=0.0.9
+PyMuPDF>=1.24
+
+# dependências da Fase 1 (o backend importa o verificador existente)
+pdfplumber>=0.11
+beautifulsoup4>=4.12
+
+# testes
+pytest>=8.0

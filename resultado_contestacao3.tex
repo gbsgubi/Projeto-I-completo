@@ -1,0 +1,153 @@
+\documentclass[12pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[brazil]{babel}
+\usepackage[margin=2.5cm]{geometry}
+\usepackage{xcolor}
+\usepackage{booktabs}
+\usepackage{longtable}
+\usepackage{array}
+\usepackage{parskip}
+\usepackage{fancyhdr}
+\usepackage{titlesec}
+
+\definecolor{corOK}{HTML}{1a7a3c}
+\definecolor{corERRO}{HTML}{c0392b}
+\definecolor{corINFO}{HTML}{2471a3}
+\definecolor{corVERIFICAR}{HTML}{d68910}
+\definecolor{corFundoReprovado}{HTML}{fadbd8}
+\definecolor{corFundoAprovado}{HTML}{d5f5e3}
+\definecolor{cinzaClaro}{HTML}{f2f3f4}
+
+\newcommand{\statusOK}[1]{\textcolor{corOK}{\textbf{[OK]}} #1}
+\newcommand{\statusERRO}[1]{\textcolor{corERRO}{\textbf{[ERRO]}} #1}
+\newcommand{\statusINFO}[1]{\textcolor{corINFO}{\textbf{[INFO]}} #1}
+\newcommand{\statusVERIFICAR}[1]{\textcolor{corVERIFICAR}{\textbf{[VERIFICAR]}} #1}
+
+\pagestyle{fancy}
+\fancyhf{}
+\rhead{Verificador de Contestação -- Fase 1}
+\lhead{Contestação 3}
+\rfoot{Página \thepage}
+\lfoot{Gerado em 30/06/2026}
+
+\titleformat{\section}{\large\bfseries}{}{0em}{}[\titlerule]
+\titleformat{\subsection}{\normalsize\bfseries}{}{0em}{}
+
+\begin{document}
+
+% -----------------------------------------------------------------------
+% Cabeçalho
+% -----------------------------------------------------------------------
+\begin{center}
+  {\LARGE \textbf{Relatório de Verificação de Contestação}}\\[0.4em]
+  {\large Contestação 3 --- Clóvis Brandão de Lima}\\[0.2em]
+  {\small Processo n.º 9004593-87.2022.5.03.5644 \quad NB: 24/458.897.981-2 \quad DER: 13/05/2022}
+\end{center}
+
+\vspace{0.5em}
+\noindent\colorbox{corFundoAprovado}{%
+  \begin{minipage}{\dimexpr\linewidth-2\fboxsep}
+    \centering
+    \vspace{0.3em}
+    {\large \textcolor{corOK}{\textbf{VEREDITO: APROVADO}}}\\
+    Erros: \textbf{0} \quad|\quad Pontos de verificação manual: \textbf{0}
+    \vspace{0.3em}
+  \end{minipage}%
+}
+
+\vspace{1em}
+
+% -----------------------------------------------------------------------
+% Bloco 1 - Estrutural
+% -----------------------------------------------------------------------
+\section{Bloco 1 --- Estrutural}
+
+\statusINFO{Tipo de endereçamento (JEF x Justiça Federal comum)}\\
+Endereçamento identificado: \textbf{JEF (Juizado Especial Federal)}.\\
+\textit{Evidência: ... SENHOR(A) DOUTOR(A) JUIZ(A) FEDERAL DA 9ª VARA FEDERAL DO JUIZADO ESPECIAL FEDERAL DA SUBSEÇÃO JUDICIÁRIA DE SÃO PAULO -- SP Processo n.º 900459...}
+
+\medskip
+\statusOK{Campo obrigatório: NB} --- NB presente.
+
+\medskip
+\statusOK{Campo obrigatório: DER} --- DER presente.
+
+\medskip
+\statusOK{Campo obrigatório: Número do processo} --- Número do processo presente.
+
+\medskip
+\statusOK{Campo obrigatório: Nome do autor} --- Nome do autor presente.\\
+\textit{Evidência: ... que lhe move CLÓVIS BRANDÃO DE LIMA, vem, respeitosamente...}
+
+\medskip
+\statusOK{Campo obrigatório: Tipo de benefício} --- Tipo de benefício presente.
+
+\medskip
+\statusOK{Marcações de edição não removidas (colchetes, placeholders, instruções, amarelo)}\\
+Nenhuma marcação de edição remanescente detectada.
+
+% -----------------------------------------------------------------------
+% Bloco 2 - Preliminares
+% -----------------------------------------------------------------------
+\section{Bloco 2 --- Preliminares (presença)}
+
+\begin{longtable}{p{8.5cm} p{4.5cm}}
+  \toprule
+  \textbf{Preliminar} & \textbf{Status} \\
+  \midrule
+  \endfirsthead
+  \toprule
+  \textbf{Preliminar} & \textbf{Status} \\
+  \midrule
+  \endhead
+  Juízo 100\% Digital                         & \textcolor{corOK}{\textbf{PRESENTE}} \\
+  Audiência de Conciliação                    & \textcolor{corOK}{\textbf{PRESENTE}} \\
+  Renúncia aos 60 Salários-Mínimos            & \textcolor{corOK}{\textbf{PRESENTE}} \\
+  Decadência                                  & AUSENTE \\
+  Prescrição                                  & AUSENTE \\
+  Coisa Julgada                               & AUSENTE \\
+  Litispendência                              & AUSENTE \\
+  PPP não apresentado administrativamente     & AUSENTE \\
+  Períodos reconhecidos administrativamente   & AUSENTE \\
+  Petição inicial inepta                      & AUSENTE \\
+  \bottomrule
+\end{longtable}
+
+\statusOK{Renúncia aos 60 SM obrigatória quando o juízo é o JEF}\\
+Processo no JEF e preliminar de Renúncia aos 60 SM presente.
+
+% -----------------------------------------------------------------------
+% Bloco 6 - Redistribuição
+% -----------------------------------------------------------------------
+\section{Bloco 6 --- Redistribuição}
+
+\statusOK{Indício de categoria vigilante/vigia/guarda/policial} --- Sem indício detectado.
+
+\medskip
+\statusOK{Indício de profissional/ambiente de saúde + agente biológico} --- Sem indício combinado detectado.
+
+\medskip
+\statusOK{Indício de professor com período posterior a 1981} --- Sem indício detectado.
+
+% -----------------------------------------------------------------------
+% Teses
+% -----------------------------------------------------------------------
+\section{Teses presentes (Blocos 3/4/5 --- catalogação)}
+
+\statusINFO{Catalogação das teses padronizadas presentes (CTN-/DIVESP- etc.)}\\
+Nenhuma tese padronizada (CTN-/DIVESP-) encontrada no texto.
+
+% -----------------------------------------------------------------------
+% Verificações adiadas
+% -----------------------------------------------------------------------
+\section{Verificações adiadas para a fase do LLM}
+
+\begin{itemize}
+  \item \texttt{[3.x]} Compatibilidade tese × agente × período (marcos temporais)
+  \item \texttt{[2.8]} Distinção entre as três situações de PPP não apresentado
+  \item \texttt{[2.45]} Cabimento de decadência/prescrição com base em datas e tipo de ação
+  \item \texttt{[1.4]} Cobertura dos períodos requeridos na petição inicial
+\end{itemize}
+
+\end{document}

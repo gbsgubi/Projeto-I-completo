@@ -1,0 +1,17 @@
+@import "tailwindcss";
+
+/* Fonte de sistema — nenhum recurso remoto. */
+:root {
+  font-family: ui-sans-serif, system-ui, "Segoe UI", Roboto, Arial, sans-serif;
+}
+
+/* Pulso do grifo quando o item correspondente é clicado no painel. */
+@keyframes pulso-grifo {
+  0%   { outline-color: rgba(30, 64, 175, 0.9); outline-offset: 0px; }
+  50%  { outline-color: rgba(30, 64, 175, 0.2); outline-offset: 6px; }
+  100% { outline-color: rgba(30, 64, 175, 0.9); outline-offset: 0px; }
+}
+.grifo-pulsando {
+  outline: 3px solid rgba(30, 64, 175, 0.9);
+  animation: pulso-grifo 0.8s ease-in-out 2;
+}
