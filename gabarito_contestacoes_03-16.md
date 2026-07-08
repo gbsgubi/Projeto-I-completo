@@ -1,10 +1,10 @@
-# Gabarito — Banco de testes de contestações (03 a 16)
+# Gabarito — Banco de testes de contestações (03 a 17)
 
 Mesmo padrão de `minuta_teste.pdf` / `Contestação1.pdf`. Fundamentação: *Manual de
 Contestação 2024* e *Treinamento Preliminares II* (Dr. Roberto Taro Sumitomo).
 
 Convenção de veredito: **APROVAR** (sem erros) / **REPROVAR** (com erro(s)).
-Resumo: **4 corretas** (03, 04, 07, 16) e **10 incorretas** (05, 06, 08–15).
+Resumo: **4 corretas** (03, 04, 07, 16) e **11 incorretas** (05, 06, 08–15, 17).
 
 | Arq. | Veredito | Tipo de erro (resumo) |
 |------|----------|-----------------------|
@@ -22,6 +22,7 @@ Resumo: **4 corretas** (03, 04, 07, 16) e **10 incorretas** (05, 06, 08–15).
 | 14 | REPROVAR | vício CREA/CRM (não usar) + limiar de calor errado |
 | 15 | REPROVAR | faltam preliminares obrigatórias (100% Digital e Renúncia 60SM) |
 | 16 | APROVAR | — (dois períodos, teses podadas, averbação pedida) |
+| 17 | REPROVAR | peça-síntese com 7 erros determinísticos (NB, 100% Digital, decadência, ruído ×2, CREA/CRM, vedação) |
 
 ---
 
@@ -113,6 +114,22 @@ JEF. Ruído 03/12/1998–18/11/2003 → 90 dB(A) + NR-15 (correto). Calor
 (sem blocos de período que não se aplicam). **Averbação** pedida porque o autor
 requer averbação de atividade urbana. Nenhum período ultrapassa 13/11/2019 →
 corretamente sem vedação.
+
+### 17 — REPROVAR
+Peça-síntese que combina, numa só minuta (JEF, ruído 10/01/2006–20/03/2021,
+DER 20/06/2024, ajuizada em 2025), erros já usados isoladamente nas peças
+05, 06, 12, 14 e 15 — todos detectáveis deterministicamente:
+1. **NB ausente** no cabeçalho (regra 1.2 — como na 12).
+2. **Preliminar Juízo 100% Digital ausente** (regra 2.1 — como na 15).
+3. **Decadência indevida**: ação de concessão ajuizada em 2025 com DER em
+   2024 — o prazo de 10 anos é impossível (regra 2.4 — como na 05).
+4. **Limiar de ruído errado**: "90 dB(A)" em período todo pós-19/11/2003;
+   o correto é **85 dB(A) NEN** (regra 3.5 — como na 06).
+5. **Metodologia errada**: invoca NR-15; pós-18/11/2003 exige-se NEN/NHO-01
+   (regra 3.5 — como na 06).
+6. **Vício CREA/CRM** (obsoleto; regra 3.3 — como na 14).
+7. **Falta a vedação**: o período ultrapassa 13/11/2019 e a vedação à
+   conversão (EC 103/2019) não foi inserida (regra 3.17 — como na 06).
 
 ---
 

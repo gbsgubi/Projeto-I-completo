@@ -53,9 +53,10 @@ cd web
 ## O que a interface faz
 
 - **Tela inicial:** upload por arrastar/soltar (`.pdf`/`.html`) + **galeria** com
-  as 14 peças do banco de testes (`contestacao_03.pdf … 16.pdf`), mostrando o
+  as 15 peças do banco de testes (`contestacao_03.pdf … 17.pdf`), mostrando o
   veredito **esperado** (gabarito) × **obtido** (verificador), com indicador de
-  acerto. As divergências ✘ são as checagens adiadas para a fase do LLM.
+  acerto. Com a camada determinística completa, todas as peças devem bater ✓
+  com o gabarito — uma divergência ✘ indica regressão nas regras.
 - **Tela de diagnóstico** (duas colunas; empilha no mobile):
   - *Esquerda* — o PDF renderizado (PDF.js) com **overlays translúcidos** sobre
     cada evidência localizada: vermelho = `ERRO`, âmbar = `VERIFICAR`,

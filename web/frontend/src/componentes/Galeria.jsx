@@ -65,7 +65,7 @@ export default function Galeria({ aoDiagnosticar }) {
         <div>
           <h2 className="text-lg font-semibold">Exemplos do banco de testes</h2>
           <p className="text-sm text-slate-500">
-            14 peças ({exemplos[0]?.arquivo} … {exemplos.at(-1)?.arquivo}) com o
+            {exemplos.length} peças ({exemplos[0]?.arquivo} … {exemplos.at(-1)?.arquivo}) com o
             veredito esperado do gabarito. Clique numa peça para ver o diagnóstico.
           </p>
         </div>
